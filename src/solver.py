@@ -30,6 +30,16 @@ class SolveRecord:
 def _timeout_handler(signum, frame):
     raise TimeoutError("solver timeout")
 
+def make_grad(p):
+    """兼容不同版本 pycutest 的梯度接口"""
+    def grad(x):
+        try:
+            _, g = p.obj(x, gradient=True)
+        except TypeError:
+            g = p.grad(x)
+        return g
+    return grad
+
 def solve(p, init: InitResult, category: str, cfg: Config) -> SolveRecord:
     solver_cfg = cfg.solver[f"category_{category}"]
     method = solver_cfg["method"]
@@ -46,10 +56,8 @@ def solve(p, init: InitResult, category: str, cfg: Config) -> SolveRecord:
             p.bu if p.bu is not None else [None]*p.n,
         ))
 
-    # 梯度函数
-    def grad(x):
-        _, g = p.obj(x, gradient=True)
-        return g
+    # 梯度函数（兼容不同版本 pycutest）
+    grad = make_grad(p)
 
     t0 = time.perf_counter()
     try:
