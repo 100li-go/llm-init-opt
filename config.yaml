@@ -1,0 +1,44 @@
+# ── 问题筛选 ──────────────────────────────────────────
+problem_selection:
+  n_max: 200          # 变量维度上限
+  m_max: 0            # 只取无一般约束
+  n_sample: 300       # 最终抽样数量
+  seed: 42            # 抽样随机种子
+
+# ── 初值生成 ──────────────────────────────────────────
+init:
+  K: 10               # 每个 source 的初值数量
+  alpha_default: 1.0  # 扰动强度默认值
+  alpha_retry: 0.2    # 回退重试时的扰动强度
+  alpha_min: 0.05     # LLM策略alpha下限（校验用）
+  alpha_max: 1.0      # LLM策略alpha上限（校验用）
+  sparsity_choices: [0.05, 0.2, 1.0]  # 离散sparsity集合
+  random_seed_base: 1000  # random baseline种子基址
+
+# ── 求解器 ─────────────────────────────────────────────
+solver:
+  category_A:           # 无bounds，无约束
+    method: BFGS
+    maxiter: 500
+    gtol: 1.0e-6
+  category_B:           # box bounds，无约束
+    method: L-BFGS-B
+    maxiter: 500
+    ftol: 1.0e-12
+  timeout_sec: 120      # 单次run超时保护
+
+# ── LLM ────────────────────────────────────────────────
+llm:
+  model: deepseek-chat
+  temperature: 0.2
+  max_tokens: 2048
+  max_retries: 3
+  retry_delay_sec: 5
+  K_strategies: 10      # 要求返回策略数
+
+# ── 路径 ───────────────────────────────────────────────
+paths:
+  problem_set: problem_set.json
+  strategies_dir: llm_strategies/
+  results_dir: results/
+  figures_dir: figures/

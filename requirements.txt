@@ -1,0 +1,9 @@
+pycutest>=1.5
+scipy>=1.11
+numpy>=1.25
+pandas>=2.0
+pyarrow>=14.0        # parquet 支持
+openai>=1.10         # DeepSeek 兼容 OpenAI SDK
+tqdm
+pyyaml
+matplotlib
