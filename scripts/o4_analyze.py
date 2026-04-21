@@ -6,6 +6,7 @@ from src.config import CFG
 from src.aggregator import build_summary
 from src.analysis.stats import compare_success_rate, compare_nfev
 from src.analysis.performance_profile import performance_profile
+from src.analysis.report import generate_report
 
 if __name__ == "__main__":
     runs = pd.read_parquet(CFG.results_dir / "runs.parquet")
@@ -43,3 +44,8 @@ if __name__ == "__main__":
     fig2.tight_layout()
     fig2.savefig(fig_dir / "perf_profile_time.pdf", dpi=150)
     print("Figures saved.")
+
+    # Generate text report
+    report_path = Path(CFG.paths["results_dir"]) / "report.txt"
+    report = generate_report(summary, out_path=report_path)
+    print(report)

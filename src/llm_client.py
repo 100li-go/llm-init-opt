@@ -9,6 +9,7 @@
   generate_strategies(meta: dict, cfg: Config) -> list[dict]
 """
 import json
+import os
 import time
 import re
 import openai   # DeepSeek 兼容 OpenAI SDK
@@ -34,7 +35,7 @@ Rules:
 - Alpha close to 0.05 means gentle perturbation; 1.0 means explore widely.
 """.strip()
 
-def _build_user_prompt(meta: dict, cfg: Config) -> str:
+def _build_user_prompt(meta: dict, cfg: Config) -> tuple:
     init_cfg = cfg.init
     system_filled = _SYSTEM_PROMPT.format(
         K=cfg.llm["K_strategies"],
@@ -65,7 +66,7 @@ def _extract_json_array(text: str) -> list:
 def generate_strategies(meta: dict, cfg: Config) -> list:
     system_prompt, user_prompt = _build_user_prompt(meta, cfg)
     client = openai.OpenAI(
-        api_key=cfg.llm.get("api_key"),          # 也可从环境变量读
+        api_key=cfg.llm.get("api_key") or os.environ.get("OPENAI_API_KEY"),
         base_url="https://api.deepseek.com/v1",
     )
     for attempt in range(cfg.llm["max_retries"]):
