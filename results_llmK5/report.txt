@@ -1,0 +1,92 @@
+============================================================
+阶段一结论报告
+============================================================
+[cutest] 至少成功一次的题数: 248/296
+[random_raw] 至少成功一次的题数: 286/296
+[random_post] 至少成功一次的题数: 281/296
+[llm_raw] 至少成功一次的题数: 247/289
+[llm_post] 至少成功一次的题数: 242/289
+
+RQ1 成功率检验 (Wilcoxon): stat=395.0000, p=1.0000, n=289
+RQ2 nfev检验 (Wilcoxon): stat=13607.0000, p=1.0000, median_ratio=1.3636, n=235
+
+Unbounded:
+  [cutest] success_any=93, median_best_nfev=17.0
+  [random_raw] success_any=117, median_best_nfev=1.0
+  [random_post] success_any=115, median_best_nfev=1.0
+  [llm_raw] success_any=94, median_best_nfev=12.0
+  [llm_post] success_any=93, median_best_nfev=13.0
+Bounded:
+  [cutest] success_any=155, median_best_nfev=14.0
+  [random_raw] success_any=169, median_best_nfev=9.0
+  [random_post] success_any=166, median_best_nfev=12.0
+  [llm_raw] success_any=153, median_best_nfev=13.0
+  [llm_post] success_any=149, median_best_nfev=15.0
+
+Route-level (per-problem weighted) success_any_rate deltas from LLM
+  llm_post - random_raw:
+    USmoothNLP: +0.100 (llm_post=0.900, random_raw=0.800)
+    U:LS: +0.048 (llm_post=1.000, random_raw=0.952)
+    LEB:LS: +0.000 (llm_post=0.833, random_raw=0.833)
+    BSmoothNLP: +0.000 (llm_post=1.000, random_raw=1.000)
+    NLC:LS: +0.000 (llm_post=1.000, random_raw=1.000)
+    B:LS: -0.042 (llm_post=0.917, random_raw=0.958)
+    LCBSmoothNLP: -0.080 (llm_post=0.885, random_raw=0.964)
+    LEBSmoothNLP: -0.083 (llm_post=0.917, random_raw=1.000)
+    NLC:SmoothNLP: -0.233 (llm_post=0.754, random_raw=0.986)
+    NLC:Nonsmooth: -0.400 (llm_post=0.600, random_raw=1.000)
+  llm_post - random_post:
+    USmoothNLP: +0.100 (llm_post=0.900, random_post=0.800)
+    U:LS: +0.048 (llm_post=1.000, random_post=0.952)
+    NLC:LS: +0.000 (llm_post=1.000, random_post=1.000)
+    BSmoothNLP: +0.000 (llm_post=1.000, random_post=1.000)
+    LEB:LS: +0.000 (llm_post=0.833, random_post=0.833)
+    LEBSmoothNLP: +0.000 (llm_post=0.917, random_post=0.917)
+    B:LS: -0.042 (llm_post=0.917, random_post=0.958)
+    LCBSmoothNLP: -0.044 (llm_post=0.885, random_post=0.929)
+    NLC:SmoothNLP: -0.219 (llm_post=0.754, random_post=0.972)
+    NLC:Nonsmooth: -0.400 (llm_post=0.600, random_post=1.000)
+
+All-arm pairwise stats (problem-level)
+  success_any | llm_post_vs_llm_raw: p=0.9706, paired_n=289/289, median_diff=0
+  success_any | llm_post_vs_random_raw: p=1, paired_n=289/289, median_diff=0
+  success_any | llm_post_vs_random_post: p=1, paired_n=289/289, median_diff=0
+  success_any | llm_post_vs_cutest: p=0.5, paired_n=289/289, median_diff=0
+  success_any | random_raw_vs_cutest: p=1.163e-07, paired_n=296/296, median_diff=0
+  success_any | random_post_vs_cutest: p=7.414e-07, paired_n=296/296, median_diff=0
+  success_any | random_raw_vs_random_post: p=0.04779, paired_n=296/296, median_diff=0
+  best_nfev | llm_post_vs_llm_raw: p=0.9988, paired_n=241/289, median_diff=0
+  best_nfev | llm_post_vs_random_raw: p=1, paired_n=235/289, median_diff=2
+  best_nfev | llm_post_vs_random_post: p=1, paired_n=237/289, median_diff=1
+  best_nfev | llm_post_vs_cutest: p=7.776e-06, paired_n=236/289, median_diff=0
+  best_nfev | random_raw_vs_cutest: p=1.074e-06, paired_n=240/296, median_diff=-2
+  best_nfev | random_post_vs_cutest: p=0.0001501, paired_n=241/296, median_diff=-2
+  best_nfev | random_raw_vs_random_post: p=0.0001474, paired_n=279/296, median_diff=0
+  best_time | llm_post_vs_llm_raw: p=0.9959, paired_n=241/289, median_diff=2.344e-05
+  best_time | llm_post_vs_random_raw: p=0.001796, paired_n=235/289, median_diff=-4.42e-07
+  best_time | llm_post_vs_random_post: p=0.2849, paired_n=237/289, median_diff=6.282e-06
+  best_time | llm_post_vs_cutest: p=6.637e-30, paired_n=236/289, median_diff=-0.006789
+  best_time | random_raw_vs_cutest: p=0.07265, paired_n=240/296, median_diff=-0.003747
+  best_time | random_post_vs_cutest: p=2.845e-07, paired_n=241/296, median_diff=-0.006265
+  best_time | random_raw_vs_random_post: p=0.8885, paired_n=279/296, median_diff=2.283e-05
+  best_f_final | llm_post_vs_llm_raw: p=0.5334, paired_n=241/289, median_diff=0
+  best_f_final | llm_post_vs_random_raw: p=7.055e-18, paired_n=235/289, median_diff=-0.0003146
+  best_f_final | llm_post_vs_random_post: p=2.353e-09, paired_n=237/289, median_diff=0
+  best_f_final | llm_post_vs_cutest: p=2.432e-09, paired_n=236/289, median_diff=0
+  best_f_final | random_raw_vs_cutest: p=1, paired_n=240/296, median_diff=1.073e-09
+  best_f_final | random_post_vs_cutest: p=1, paired_n=241/296, median_diff=0
+  best_f_final | random_raw_vs_random_post: p=1, paired_n=279/296, median_diff=0
+  best_nfev_cost_capped | llm_post_vs_llm_raw: p=0.9998, paired_n=289/289, median_diff=0
+  best_nfev_cost_capped | llm_post_vs_random_raw: p=1, paired_n=289/289, median_diff=4
+  best_nfev_cost_capped | llm_post_vs_random_post: p=1, paired_n=289/289, median_diff=2
+  best_nfev_cost_capped | llm_post_vs_cutest: p=9.054e-05, paired_n=289/289, median_diff=0
+  best_nfev_cost_capped | random_raw_vs_cutest: p=5.307e-13, paired_n=296/296, median_diff=-6
+  best_nfev_cost_capped | random_post_vs_cutest: p=9.945e-10, paired_n=296/296, median_diff=-2
+  best_nfev_cost_capped | random_raw_vs_random_post: p=3.256e-05, paired_n=296/296, median_diff=0
+  best_time_cost_capped | llm_post_vs_llm_raw: p=0.9989, paired_n=289/289, median_diff=8.44e-07
+  best_time_cost_capped | llm_post_vs_random_raw: p=0.8993, paired_n=289/289, median_diff=0.0001321
+  best_time_cost_capped | llm_post_vs_random_post: p=0.9959, paired_n=289/289, median_diff=7.964e-05
+  best_time_cost_capped | llm_post_vs_cutest: p=4.228e-26, paired_n=289/289, median_diff=-0.005547
+  best_time_cost_capped | random_raw_vs_cutest: p=2.954e-06, paired_n=296/296, median_diff=-0.007158
+  best_time_cost_capped | random_post_vs_cutest: p=2.28e-12, paired_n=296/296, median_diff=-0.008656
+  best_time_cost_capped | random_raw_vs_random_post: p=0.7457, paired_n=296/296, median_diff=1.198e-05

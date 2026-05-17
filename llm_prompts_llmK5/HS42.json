@@ -1,0 +1,101 @@
+{
+  "mode": "llm_k5",
+  "name": "HS42",
+  "route_key": "NLC:LS",
+  "payload": {
+    "n": 4,
+    "m": 2,
+    "x0": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "bounds": {
+      "has_bounds": false,
+      "bl": null,
+      "bu": null
+    },
+    "objective": {
+      "f0": 14.0,
+      "gnorm0": 7.4833,
+      "g0": [
+        0.0,
+        -2.0,
+        -4.0,
+        -6.0
+      ]
+    },
+    "constraints": {
+      "tag": "NLC",
+      "cl": [
+        0.0,
+        0.0
+      ],
+      "cu": [
+        0.0,
+        0.0
+      ],
+      "c0": [
+        -1.0,
+        0.0
+      ],
+      "max_violation0": 1.0,
+      "sum_violation0": 1.0,
+      "n_violated0": 1,
+      "topk": [
+        {
+          "i": 0,
+          "type": "eq",
+          "sense": "eq",
+          "cl": 0.0,
+          "cu": 0.0,
+          "c0": -1.0,
+          "violation": 1.0,
+          "jacobian_row_sparse": [
+            {
+              "j": 0,
+              "val": 1.0
+            }
+          ]
+        },
+        {
+          "i": 1,
+          "type": "eq",
+          "sense": "eq",
+          "cl": 0.0,
+          "cu": 0.0,
+          "c0": 0.0,
+          "violation": 0.0,
+          "jacobian_row_sparse": [
+            {
+              "j": 2,
+              "val": 2.0
+            },
+            {
+              "j": 3,
+              "val": 2.0
+            }
+          ]
+        }
+      ]
+    },
+    "scales": {
+      "x0_norm2": 2.0,
+      "suggested_step_norm": 0.5,
+      "max_abs_x_suggested": 100.0
+    },
+    "problem_properties": {
+      "objective": "sum of squares",
+      "constraints": "quadratic",
+      "regular": true,
+      "degree": 2,
+      "origin": "academic",
+      "internal": false,
+      "n": 4,
+      "m": 2
+    }
+  },
+  "system_prompt": "你是数值优化 warm-start 专家。只输出一个 JSON 数组（单行），其长度必须恰好等于 K=5。该数组的每个元素都必须是长度为 n 的 JSON 数组。所有数值必须有限。当 bounds.has_bounds=true 时，必须满足所有有限边界；对 |bl|>=1e20 或 |bu|>=1e20 的边界，按无界处理。禁止输出 JSON 对象、解释文本、注释或 markdown。",
+  "user_prompt": "策略：优先降低 max_violation0，允许相对 x0 有一定偏离。\n优先处理 constraints.topk 中 violation 最大的约束；利用每条约束的 jacobian_row_sparse 判断变量调整方向与力度。\n避免极端值，必要时参考 scales.max_abs_x_suggested 控制步长。\n\n5 个候选的分工如下（按顺序给出 5 个数组）：\n(1) 保守解：尽量接近 x0；若 max_violation0 接近 0，则优先保持可行性不变差。\n(2) 强可行化-协同：利用 topk 的 jacobian_row_sparse 协同降低 max_violation0。\n(3) 强可行化-另一方向：与(2)不同变量组合/符号方向，仍以降低 violation 为目标。\n(4) 目标改进-受限可行化：在(2)/(3)附近沿 -objective.g0 小步改进 objective，并保持 violation 不显著变差。\n(5) 探索解：与前 4 个明显不同，允许相对 x0 更大偏移但避免极端值。\n若 objective.g0 缺失，则 (4) 改为(2)/(3)附近的不同方向小扰动且保持 violation 不显著增大。\n\n下面给出 payload（UTF-8 JSON，按其中字段进行推理）：\n{\n  \"n\": 4,\n  \"m\": 2,\n  \"x0\": [\n    1.0,\n    1.0,\n    1.0,\n    1.0\n  ],\n  \"bounds\": {\n    \"has_bounds\": false,\n    \"bl\": null,\n    \"bu\": null\n  },\n  \"objective\": {\n    \"f0\": 14.0,\n    \"gnorm0\": 7.4833,\n    \"g0\": [\n      0.0,\n      -2.0,\n      -4.0,\n      -6.0\n    ]\n  },\n  \"constraints\": {\n    \"tag\": \"NLC\",\n    \"cl\": [\n      0.0,\n      0.0\n    ],\n    \"cu\": [\n      0.0,\n      0.0\n    ],\n    \"c0\": [\n      -1.0,\n      0.0\n    ],\n    \"max_violation0\": 1.0,\n    \"sum_violation0\": 1.0,\n    \"n_violated0\": 1,\n    \"topk\": [\n      {\n        \"i\": 0,\n        \"type\": \"eq\",\n        \"sense\": \"eq\",\n        \"cl\": 0.0,\n        \"cu\": 0.0,\n        \"c0\": -1.0,\n        \"violation\": 1.0,\n        \"jacobian_row_sparse\": [\n          {\n            \"j\": 0,\n            \"val\": 1.0\n          }\n        ]\n      },\n      {\n        \"i\": 1,\n        \"type\": \"eq\",\n        \"sense\": \"eq\",\n        \"cl\": 0.0,\n        \"cu\": 0.0,\n        \"c0\": 0.0,\n        \"violation\": 0.0,\n        \"jacobian_row_sparse\": [\n          {\n            \"j\": 2,\n            \"val\": 2.0\n          },\n          {\n            \"j\": 3,\n            \"val\": 2.0\n          }\n        ]\n      }\n    ]\n  },\n  \"scales\": {\n    \"x0_norm2\": 2.0,\n    \"suggested_step_norm\": 0.5,\n    \"max_abs_x_suggested\": 100.0\n  },\n  \"problem_properties\": {\n    \"objective\": \"sum of squares\",\n    \"constraints\": \"quadratic\",\n    \"regular\": true,\n    \"degree\": 2,\n    \"origin\": \"academic\",\n    \"internal\": false,\n    \"n\": 4,\n    \"m\": 2\n  }\n}"
+}

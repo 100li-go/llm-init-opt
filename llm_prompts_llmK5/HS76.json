@@ -1,0 +1,153 @@
+{
+  "mode": "llm_k5",
+  "name": "HS76",
+  "route_key": "LCB:SmoothNLP",
+  "payload": {
+    "n": 4,
+    "m": 3,
+    "x0": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "bounds": {
+      "has_bounds": true,
+      "bl": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bu": [
+        100000000.0,
+        100000000.0,
+        100000000.0,
+        100000000.0
+      ]
+    },
+    "objective": {
+      "f0": -1.25,
+      "gnorm0": 3.2403,
+      "g0": [
+        -0.5,
+        -2.5,
+        2.0,
+        0.0
+      ]
+    },
+    "constraints": {
+      "tag": "LCB",
+      "cl": [
+        -100000000.0,
+        -100000000.0,
+        0.0
+      ],
+      "cu": [
+        0.0,
+        0.0,
+        100000000.0
+      ],
+      "c0": [
+        -2.5,
+        -1.5,
+        1.0
+      ],
+      "max_violation0": 0.0,
+      "sum_violation0": 0.0,
+      "n_violated0": 0,
+      "topk": [
+        {
+          "i": 0,
+          "type": "ineq",
+          "sense": "le",
+          "cl": -100000000.0,
+          "cu": 0.0,
+          "c0": -2.5,
+          "violation": 0.0,
+          "jacobian_row_sparse": [
+            {
+              "j": 1,
+              "val": 2.0
+            },
+            {
+              "j": 0,
+              "val": 1.0
+            },
+            {
+              "j": 2,
+              "val": 1.0
+            },
+            {
+              "j": 3,
+              "val": 1.0
+            }
+          ]
+        },
+        {
+          "i": 1,
+          "type": "ineq",
+          "sense": "le",
+          "cl": -100000000.0,
+          "cu": 0.0,
+          "c0": -1.5,
+          "violation": 0.0,
+          "jacobian_row_sparse": [
+            {
+              "j": 0,
+              "val": 3.0
+            },
+            {
+              "j": 2,
+              "val": 2.0
+            },
+            {
+              "j": 1,
+              "val": 1.0
+            },
+            {
+              "j": 3,
+              "val": -1.0
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "type": "ineq",
+          "sense": "ge",
+          "cl": 0.0,
+          "cu": 100000000.0,
+          "c0": 1.0,
+          "violation": 0.0,
+          "jacobian_row_sparse": [
+            {
+              "j": 2,
+              "val": 4.0
+            },
+            {
+              "j": 1,
+              "val": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    "scales": {
+      "x0_norm2": 1.0,
+      "suggested_step_norm": 0.25,
+      "max_abs_x_suggested": 100.0
+    },
+    "problem_properties": {
+      "objective": "quadratic",
+      "constraints": "linear",
+      "regular": true,
+      "degree": 2,
+      "origin": "academic",
+      "internal": false,
+      "n": 4,
+      "m": 3
+    }
+  },
+  "system_prompt": "你是数值优化 warm-start 专家。只输出一个 JSON 数组（单行），其长度必须恰好等于 K=5。该数组的每个元素都必须是长度为 n 的 JSON 数组。所有数值必须有限。当 bounds.has_bounds=true 时，必须满足所有有限边界；对 |bl|>=1e20 或 |bu|>=1e20 的边界，按无界处理。禁止输出 JSON 对象、解释文本、注释或 markdown。",
+  "user_prompt": "策略：当前线性约束已基本可行（max_violation0 接近 0）。优先保持可行性，不显著增大 violation 与 n_violated0；在此基础上改进 objective。\n\n5 个候选的分工如下（按顺序给出 5 个数组）：\n(1) 保守解：尽量接近 x0，优先不让 max_violation0 变差。\n(2) 强可行化：优先降低 max_violation0 与 n_violated0，并按 sense=le/ge/range 方向修复。\n(3) 可行化-偏重 top1：主要修复 topk[0]，与(2)使用不同变量组合/方向。\n(4) 目标改进-可行约束：在(1)/(2)附近沿 -objective.g0 小步改进 objective，同时保持 violation 不显著上升。\n(5) 探索解：与前 4 个明显不同，避免极端值，且仍以降低 violation 为优先。\n若 objective.g0 缺失，则 (4) 改为不同方向小扰动并保持 violation 不显著增大。\n\n下面给出 payload（UTF-8 JSON，按其中字段进行推理）：\n{\n  \"n\": 4,\n  \"m\": 3,\n  \"x0\": [\n    0.5,\n    0.5,\n    0.5,\n    0.5\n  ],\n  \"bounds\": {\n    \"has_bounds\": true,\n    \"bl\": [\n      0.0,\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"bu\": [\n      100000000.0,\n      100000000.0,\n      100000000.0,\n      100000000.0\n    ]\n  },\n  \"objective\": {\n    \"f0\": -1.25,\n    \"gnorm0\": 3.2403,\n    \"g0\": [\n      -0.5,\n      -2.5,\n      2.0,\n      0.0\n    ]\n  },\n  \"constraints\": {\n    \"tag\": \"LCB\",\n    \"cl\": [\n      -100000000.0,\n      -100000000.0,\n      0.0\n    ],\n    \"cu\": [\n      0.0,\n      0.0,\n      100000000.0\n    ],\n    \"c0\": [\n      -2.5,\n      -1.5,\n      1.0\n    ],\n    \"max_violation0\": 0.0,\n    \"sum_violation0\": 0.0,\n    \"n_violated0\": 0,\n    \"topk\": [\n      {\n        \"i\": 0,\n        \"type\": \"ineq\",\n        \"sense\": \"le\",\n        \"cl\": -100000000.0,\n        \"cu\": 0.0,\n        \"c0\": -2.5,\n        \"violation\": 0.0,\n        \"jacobian_row_sparse\": [\n          {\n            \"j\": 1,\n            \"val\": 2.0\n          },\n          {\n            \"j\": 0,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 2,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 3,\n            \"val\": 1.0\n          }\n        ]\n      },\n      {\n        \"i\": 1,\n        \"type\": \"ineq\",\n        \"sense\": \"le\",\n        \"cl\": -100000000.0,\n        \"cu\": 0.0,\n        \"c0\": -1.5,\n        \"violation\": 0.0,\n        \"jacobian_row_sparse\": [\n          {\n            \"j\": 0,\n            \"val\": 3.0\n          },\n          {\n            \"j\": 2,\n            \"val\": 2.0\n          },\n          {\n            \"j\": 1,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 3,\n            \"val\": -1.0\n          }\n        ]\n      },\n      {\n        \"i\": 2,\n        \"type\": \"ineq\",\n        \"sense\": \"ge\",\n        \"cl\": 0.0,\n        \"cu\": 100000000.0,\n        \"c0\": 1.0,\n        \"violation\": 0.0,\n        \"jacobian_row_sparse\": [\n          {\n            \"j\": 2,\n            \"val\": 4.0\n          },\n          {\n            \"j\": 1,\n            \"val\": 1.0\n          }\n        ]\n      }\n    ]\n  },\n  \"scales\": {\n    \"x0_norm2\": 1.0,\n    \"suggested_step_norm\": 0.25,\n    \"max_abs_x_suggested\": 100.0\n  },\n  \"problem_properties\": {\n    \"objective\": \"quadratic\",\n    \"constraints\": \"linear\",\n    \"regular\": true,\n    \"degree\": 2,\n    \"origin\": \"academic\",\n    \"internal\": false,\n    \"n\": 4,\n    \"m\": 3\n  }\n}"
+}

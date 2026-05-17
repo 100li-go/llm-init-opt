@@ -1,0 +1,222 @@
+[INFO] total_problems=208, request_timeout_sec=60, build_timeout_sec=600, max_attempts=2, llm_retries=1
+[INFO] PYCUTEST_CACHE=/mnt/d/project2/pycutest_cache_holder
+[INFO] prompt_dir=results/new_target_routes_llmK5/llm_prompts_llmK5, candidates_dir=results/new_target_routes_llmK5/llm_candidates_llmK5
+[INFO] multi_output_enabled=True, multi_k=5, mode_suffix=_llmK5
+[INFO] skip_crashy enabled, blacklist_size=3
+LLM候选初值生成:   0%|          | 0/208 [00:00<?, ?it/s]LLM候选初值生成:   0%|          | 1/208 [00:22<1:19:11, 22.96s/it]LLM候选初值生成:   1%|          | 2/208 [00:24<36:04, 10.51s/it]  LLM候选初值生成:   1%|▏         | 3/208 [00:28<25:18,  7.41s/it]LLM候选初值生成:   2%|▏         | 4/208 [00:34<22:46,  6.70s/it]LLM候选初值生成:   2%|▏         | 5/208 [01:02<48:55, 14.46s/it]LLM候选初值生成:   3%|▎         | 6/208 [01:03<33:48, 10.04s/it]LLM候选初值生成:   3%|▎         | 7/208 [01:07<26:41,  7.97s/it]LLM候选初值生成:   4%|▍         | 8/208 [01:09<20:29,  6.15s/it]LLM候选初值生成:   4%|▍         | 9/208 [01:14<18:47,  5.66s/it]LLM候选初值生成:   5%|▍         | 10/208 [01:16<14:48,  4.49s/it]LLM候选初值生成:   5%|▌         | 11/208 [01:19<13:12,  4.02s/it]LLM候选初值生成:   6%|▌         | 12/208 [01:21<11:35,  3.55s/it]LLM候选初值生成:   6%|▋         | 13/208 [01:46<32:08,  9.89s/it]LLM候选初值生成:   7%|▋         | 14/208 [02:10<46:33, 14.40s/it]LLM候选初值生成:   7%|▋         | 15/208 [02:14<35:40, 11.09s/it]LLM候选初值生成:   8%|▊         | 16/208 [02:16<26:37,  8.32s/it]LLM候选初值生成:   8%|▊         | 17/208 [02:18<20:26,  6.42s/it]LLM候选初值生成:   9%|▊         | 18/208 [02:33<28:44,  9.08s/it]LLM候选初值生成:   9%|▉         | 19/208 [02:35<21:39,  6.88s/it]LLM候选初值生成:  10%|▉         | 20/208 [02:44<24:07,  7.70s/it]LLM候选初值生成:  10%|█         | 21/208 [02:50<22:09,  7.11s/it]LLM候选初值生成:  11%|█         | 22/208 [02:52<17:08,  5.53s/it]LLM候选初值生成:  11%|█         | 23/208 [03:08<26:25,  8.57s/it]LLM候选初值生成:  12%|█▏        | 24/208 [03:10<20:41,  6.75s/it]LLM候选初值生成:  12%|█▏        | 25/208 [03:12<16:03,  5.27s/it]LLM候选初值生成:  12%|█▎        | 26/208 [03:14<13:08,  4.33s/it]LLM候选初值生成:  13%|█▎        | 27/208 [03:16<10:48,  3.58s/it]LLM候选初值生成:  13%|█▎        | 28/208 [03:17<08:48,  2.94s/it]LLM候选初值生成:  14%|█▍        | 29/208 [03:35<21:48,  7.31s/it]LLM候选初值生成:  14%|█▍        | 30/208 [03:37<17:05,  5.76s/it]LLM候选初值生成:  15%|█▍        | 31/208 [03:40<14:31,  4.92s/it]LLM候选初值生成:  15%|█▌        | 32/208 [03:43<12:26,  4.24s/it]LLM候选初值生成:  16%|█▌        | 33/208 [03:52<17:10,  5.89s/it]LLM候选初值生成:  16%|█▋        | 34/208 [03:54<13:34,  4.68s/it]LLM候选初值生成:  17%|█▋        | 35/208 [04:01<15:17,  5.30s/it]LLM候选初值生成:  17%|█▋        | 36/208 [04:04<13:06,  4.57s/it]LLM候选初值生成:  18%|█▊        | 37/208 [04:06<10:58,  3.85s/it]LLM候选初值生成:  18%|█▊        | 38/208 [04:08<09:16,  3.28s/it]LLM候选初值生成:  19%|█▉        | 39/208 [04:13<10:57,  3.89s/it]LLM候选初值生成:  19%|█▉        | 40/208 [04:18<11:44,  4.20s/it]LLM候选初值生成:  20%|█▉        | 41/208 [04:20<10:08,  3.64s/it]LLM候选初值生成:  20%|██        | 42/208 [04:23<08:50,  3.20s/it]LLM候选初值生成:  21%|██        | 43/208 [04:24<07:25,  2.70s/it]LLM候选初值生成:  21%|██        | 44/208 [04:30<09:31,  3.49s/it]LLM候选初值生成:  22%|██▏       | 45/208 [04:33<09:12,  3.39s/it]LLM候选初值生成:  22%|██▏       | 46/208 [04:59<28:03, 10.39s/it]LLM候选初值生成:  23%|██▎       | 47/208 [05:02<21:19,  7.95s/it]LLM候选初值生成:  24%|██▎       | 49/208 [05:03<12:20,  4.66s/it]LLM候选初值生成:  24%|██▍       | 50/208 [05:05<10:33,  4.01s/it]LLM候选初值生成:  25%|██▍       | 51/208 [05:09<10:20,  3.95s/it]LLM候选初值生成:  25%|██▌       | 52/208 [05:11<08:42,  3.35s/it]LLM候选初值生成:  25%|██▌       | 53/208 [05:13<07:34,  2.93s/it]LLM候选初值生成:  26%|██▌       | 54/208 [05:15<06:48,  2.65s/it]LLM候选初值生成:  26%|██▋       | 55/208 [05:18<06:54,  2.71s/it]LLM候选初值生成:  27%|██▋       | 56/208 [05:20<06:50,  2.70s/it]LLM候选初值生成:  27%|██▋       | 57/208 [05:22<05:59,  2.38s/it]LLM候选初值生成:  28%|██▊       | 58/208 [05:24<06:02,  2.41s/it]LLM候选初值生成:  28%|██▊       | 59/208 [05:27<06:09,  2.48s/it]LLM候选初值生成:  29%|██▉       | 60/208 [05:29<05:43,  2.32s/it]LLM候选初值生成:  29%|██▉       | 61/208 [05:31<05:20,  2.18s/it]LLM候选初值生成:  30%|██▉       | 62/208 [05:32<04:59,  2.05s/it]LLM候选初值生成:  30%|███       | 63/208 [05:36<06:03,  2.51s/it]LLM候选初值生成:  31%|███       | 64/208 [05:38<05:36,  2.34s/it]LLM候选初值生成:  31%|███▏      | 65/208 [05:40<05:19,  2.23s/it]LLM候选初值生成:  32%|███▏      | 66/208 [05:43<05:55,  2.50s/it]LLM候选初值生成:  32%|███▏      | 67/208 [05:48<07:43,  3.29s/it]LLM候选初值生成:  33%|███▎      | 68/208 [05:51<07:22,  3.16s/it]LLM候选初值生成:  33%|███▎      | 69/208 [05:53<06:24,  2.77s/it]LLM候选初值生成:  34%|███▎      | 70/208 [05:55<06:00,  2.61s/it]LLM候选初值生成:  34%|███▍      | 71/208 [05:57<05:09,  2.26s/it]LLM候选初值生成:  35%|███▍      | 72/208 [05:59<04:54,  2.16s/it]LLM候选初值生成:  35%|███▌      | 73/208 [06:02<05:25,  2.41s/it]LLM候选初值生成:  36%|███▌      | 74/208 [06:35<25:59, 11.64s/it]LLM候选初值生成:  36%|███▌      | 75/208 [06:42<22:49, 10.30s/it]LLM候选初值生成:  37%|███▋      | 76/208 [06:45<17:49,  8.10s/it]LLM候选初值生成:  37%|███▋      | 77/208 [06:47<13:46,  6.31s/it]LLM候选初值生成:  38%|███▊      | 78/208 [06:53<13:29,  6.23s/it]LLM候选初值生成:  38%|███▊      | 79/208 [06:57<12:01,  5.59s/it]LLM候选初值生成:  38%|███▊      | 80/208 [07:28<28:12, 13.22s/it]LLM候选初值生成:  39%|███▉      | 81/208 [07:30<20:33,  9.72s/it]LLM候选初值生成:  39%|███▉      | 82/208 [07:34<16:47,  8.00s/it]LLM候选初值生成:  40%|███▉      | 83/208 [07:36<13:11,  6.34s/it]LLM候选初值生成:  40%|████      | 84/208 [07:38<10:18,  4.99s/it]LLM候选初值生成:  41%|████      | 85/208 [07:40<08:05,  3.95s/it]LLM候选初值生成:  41%|████▏     | 86/208 [07:42<07:15,  3.57s/it]LLM候选初值生成:  42%|████▏     | 87/208 [08:49<45:20, 22.48s/it]LLM候选初值生成:  42%|████▏     | 88/208 [09:22<51:24, 25.71s/it]LLM候选初值生成:  43%|████▎     | 89/208 [09:39<45:59, 23.19s/it]LLM候选初值生成:  43%|████▎     | 90/208 [09:41<32:49, 16.69s/it]LLM候选初值生成:  44%|████▍     | 91/208 [09:44<24:34, 12.60s/it]LLM候选初值生成:  44%|████▍     | 92/208 [09:47<18:32,  9.59s/it]LLM候选初值生成:  45%|████▍     | 93/208 [09:49<14:23,  7.51s/it]LLM候选初值生成:  45%|████▌     | 94/208 [09:51<10:52,  5.72s/it]LLM候选初值生成:  46%|████▌     | 95/208 [09:53<08:34,  4.56s/it]LLM候选初值生成:  46%|████▌     | 96/208 [09:55<07:12,  3.86s/it]LLM候选初值生成:  47%|████▋     | 97/208 [09:58<06:39,  3.60s/it]LLM候选初值生成:  47%|████▋     | 98/208 [09:59<05:27,  2.98s/it]LLM候选初值生成:  48%|████▊     | 99/208 [10:01<04:54,  2.70s/it]LLM候选初值生成:  48%|████▊     | 100/208 [10:03<04:10,  2.32s/it]LLM候选初值生成:  49%|████▊     | 101/208 [10:27<15:52,  8.90s/it]LLM候选初值生成:  49%|████▉     | 102/208 [10:29<12:12,  6.91s/it]LLM候选初值生成:  50%|████▉     | 103/208 [10:31<09:16,  5.30s/it]LLM候选初值生成:  50%|█████     | 104/208 [10:33<07:45,  4.48s/it]LLM候选初值生成:  50%|█████     | 105/208 [10:43<10:10,  5.93s/it]LLM候选初值生成:  51%|█████     | 106/208 [10:44<07:56,  4.67s/it]LLM候选初值生成:  51%|█████▏    | 107/208 [10:47<06:32,  3.88s/it]LLM候选初值生成:  52%|█████▏    | 108/208 [10:54<08:00,  4.81s/it]LLM候选初值生成:  52%|█████▏    | 109/208 [10:55<06:27,  3.92s/it]LLM候选初值生成:  53%|█████▎    | 110/208 [11:13<13:12,  8.09s/it]LLM候选初值生成:  53%|█████▎    | 111/208 [11:15<09:59,  6.18s/it]LLM候选初值生成:  54%|█████▍    | 112/208 [11:17<08:06,  5.07s/it]LLM候选初值生成:  54%|█████▍    | 113/208 [11:50<20:59, 13.26s/it]LLM候选初值生成:  55%|█████▍    | 114/208 [11:52<15:38,  9.98s/it]LLM候选初值生成:  55%|█████▌    | 115/208 [12:07<17:32, 11.32s/it]LLM候选初值生成:  56%|█████▌    | 116/208 [12:08<12:56,  8.45s/it]LLM候选初值生成:  56%|█████▋    | 117/208 [12:10<09:43,  6.41s/it]LLM候选初值生成:  57%|█████▋    | 118/208 [12:12<07:35,  5.07s/it]LLM候选初值生成:  57%|█████▋    | 119/208 [12:14<06:07,  4.13s/it]LLM候选初值生成:  58%|█████▊    | 120/208 [12:16<05:00,  3.41s/it]LLM候选初值生成:  58%|█████▊    | 121/208 [12:17<04:05,  2.82s/it]LLM候选初值生成:  59%|█████▊    | 122/208 [12:19<03:45,  2.62s/it]LLM候选初值生成:  59%|█████▉    | 123/208 [12:21<03:17,  2.32s/it]LLM候选初值生成:  60%|█████▉    | 124/208 [12:23<03:03,  2.18s/it]LLM候选初值生成:  60%|██████    | 125/208 [12:25<03:02,  2.20s/it]LLM候选初值生成:  61%|██████    | 126/208 [12:27<03:09,  2.31s/it]LLM候选初值生成:  61%|██████    | 127/208 [12:29<02:50,  2.11s/it]LLM候选初值生成:  62%|██████▏   | 128/208 [12:31<02:37,  1.97s/it]LLM候选初值生成:  62%|██████▏   | 129/208 [12:34<02:56,  2.24s/it]LLM候选初值生成:  62%|██████▎   | 130/208 [12:36<02:59,  2.30s/it]LLM候选初值生成:  63%|██████▎   | 131/208 [12:42<04:23,  3.42s/it]LLM候选初值生成:  63%|██████▎   | 132/208 [12:44<03:44,  2.95s/it]LLM候选初值生成:  64%|██████▍   | 133/208 [12:46<03:14,  2.59s/it]LLM候选初值生成:  64%|██████▍   | 134/208 [12:49<03:19,  2.70s/it]LLM候选初值生成:  65%|██████▍   | 135/208 [12:51<03:00,  2.47s/it]LLM候选初值生成:  65%|██████▌   | 136/208 [12:53<03:02,  2.53s/it]LLM候选初值生成:  66%|██████▌   | 137/208 [12:55<02:33,  2.17s/it]LLM候选初值生成:  66%|██████▋   | 138/208 [13:29<13:42, 11.75s/it]LLM候选初值生成:  67%|██████▋   | 139/208 [13:32<10:33,  9.18s/it]LLM候选初值生成:  67%|██████▋   | 140/208 [13:38<09:30,  8.39s/it]LLM候选初值生成:  68%|██████▊   | 141/208 [13:41<07:27,  6.67s/it]LLM候选初值生成:  68%|██████▊   | 142/208 [13:43<05:51,  5.33s/it]LLM候选初值生成:  69%|██████▉   | 143/208 [13:45<04:29,  4.14s/it]LLM候选初值生成:  69%|██████▉   | 144/208 [13:53<05:41,  5.33s/it]LLM候选初值生成:  70%|██████▉   | 145/208 [13:56<05:00,  4.78s/it]LLM候选初值生成:  70%|███████   | 146/208 [14:06<06:37,  6.41s/it]LLM候选初值生成:  71%|███████   | 147/208 [14:08<05:09,  5.07s/it]LLM候选初值生成:  71%|███████   | 148/208 [14:12<04:30,  4.50s/it]LLM候选初值生成:  72%|███████▏  | 149/208 [14:14<03:40,  3.74s/it]LLM候选初值生成:  72%|███████▏  | 150/208 [14:15<02:56,  3.04s/it]LLM候选初值生成:  73%|███████▎  | 151/208 [14:17<02:43,  2.87s/it]LLM候选初值生成:  73%|███████▎  | 152/208 [14:19<02:16,  2.44s/it]LLM候选初值生成:  74%|███████▎  | 153/208 [14:20<02:00,  2.20s/it]LLM候选初值生成:  74%|███████▍  | 154/208 [14:24<02:24,  2.68s/it]LLM候选初值生成:  75%|███████▍  | 155/208 [14:26<02:06,  2.39s/it]LLM候选初值生成:  75%|███████▌  | 156/208 [14:28<01:54,  2.20s/it]LLM候选初值生成:  75%|███████▌  | 157/208 [14:33<02:43,  3.20s/it]LLM候选初值生成:  76%|███████▌  | 158/208 [14:44<04:39,  5.58s/it]LLM候选初值生成:  76%|███████▋  | 159/208 [14:47<03:53,  4.77s/it]LLM候选初值生成:  77%|███████▋  | 160/208 [14:49<03:09,  3.96s/it]LLM候选初值生成:  77%|███████▋  | 161/208 [14:51<02:31,  3.23s/it]LLM候选初值生成:  78%|███████▊  | 162/208 [14:53<02:09,  2.81s/it]LLM候选初值生成:  78%|███████▊  | 163/208 [14:57<02:22,  3.17s/it]LLM候选初值生成:  79%|███████▉  | 164/208 [14:58<01:59,  2.71s/it]LLM候选初值生成:  79%|███████▉  | 165/208 [15:12<04:19,  6.04s/it]LLM候选初值生成:  80%|███████▉  | 166/208 [15:46<10:00, 14.31s/it]LLM候选初值生成:  80%|████████  | 167/208 [15:47<07:09, 10.48s/it]LLM候选初值生成:  81%|████████  | 168/208 [15:50<05:21,  8.04s/it]LLM候选初值生成:  81%|████████▏ | 169/208 [15:52<04:04,  6.28s/it]LLM候选初值生成:  82%|████████▏ | 170/208 [15:54<03:08,  4.97s/it]LLM候选初值生成:  82%|████████▏ | 171/208 [15:57<02:42,  4.40s/it]LLM候选初值生成:  83%|████████▎ | 172/208 [16:00<02:24,  4.00s/it]LLM候选初值生成:  83%|████████▎ | 173/208 [16:02<01:55,  3.30s/it]LLM候选初值生成:  84%|████████▎ | 174/208 [16:03<01:35,  2.80s/it]LLM候选初值生成:  84%|████████▍ | 175/208 [16:05<01:22,  2.51s/it]LLM候选初值生成:  85%|████████▍ | 176/208 [17:05<10:35, 19.84s/it]LLM候选初值生成:  85%|████████▌ | 177/208 [17:07<07:26, 14.39s/it]LLM候选初值生成:  86%|████████▌ | 178/208 [18:13<15:00, 30.00s/it]LLM候选初值生成:  86%|████████▌ | 179/208 [18:16<10:31, 21.77s/it]LLM候选初值生成:  87%|████████▋ | 181/208 [18:20<05:38, 12.55s/it]LLM候选初值生成:  88%|████████▊ | 182/208 [18:21<04:15,  9.82s/it]LLM候选初值生成:  88%|████████▊ | 183/208 [18:23<03:13,  7.73s/it]LLM候选初值生成:  88%|████████▊ | 184/208 [18:53<05:30, 13.77s/it]LLM候选初值生成:  89%|████████▉ | 185/208 [18:57<04:12, 10.98s/it]LLM候选初值生成:  89%|████████▉ | 186/208 [18:59<03:07,  8.51s/it]LLM候选初值生成:  90%|████████▉ | 187/208 [19:01<02:17,  6.55s/it]LLM候选初值生成:  90%|█████████ | 188/208 [19:04<01:50,  5.53s/it]LLM候选初值生成:  91%|█████████ | 189/208 [19:13<02:06,  6.65s/it]LLM候选初值生成:  91%|█████████▏| 190/208 [19:15<01:31,  5.10s/it]LLM候选初值生成:  92%|█████████▏| 191/208 [19:18<01:16,  4.50s/it]LLM候选初值生成:  92%|█████████▏| 192/208 [19:21<01:07,  4.23s/it]LLM候选初值生成:  93%|█████████▎| 193/208 [19:24<00:57,  3.82s/it]LLM候选初值生成:  93%|█████████▎| 194/208 [19:26<00:45,  3.23s/it]LLM候选初值生成:  94%|█████████▍| 195/208 [19:27<00:35,  2.72s/it]LLM候选初值生成:  94%|█████████▍| 196/208 [19:31<00:34,  2.86s/it]LLM候选初值生成:  95%|█████████▍| 197/208 [19:33<00:30,  2.74s/it]LLM候选初值生成:  95%|█████████▌| 198/208 [19:37<00:29,  2.96s/it]LLM候选初值生成:  96%|█████████▌| 199/208 [19:54<01:04,  7.20s/it]LLM候选初值生成:  96%|█████████▌| 200/208 [20:14<01:29, 11.15s/it]LLM候选初值生成:  97%|█████████▋| 201/208 [20:25<01:17, 11.00s/it]LLM候选初值生成:  97%|█████████▋| 202/208 [20:26<00:49,  8.22s/it]LLM候选初值生成:  98%|█████████▊| 203/208 [20:30<00:33,  6.77s/it]LLM候选初值生成:  98%|█████████▊| 204/208 [20:33<00:22,  5.63s/it]LLM候选初值生成:  99%|█████████▊| 205/208 [20:37<00:15,  5.17s/it]LLM候选初值生成:  99%|█████████▉| 206/208 [20:39<00:08,  4.23s/it]LLM候选初值生成: 100%|█████████▉| 207/208 [20:40<00:03,  3.39s/it]LLM候选初值生成: 100%|██████████| 208/208 [20:43<00:00,  3.30s/it]LLM候选初值生成: 100%|██████████| 208/208 [20:43<00:00,  5.98s/it]
+[OK] HS78: saved in 23.0s
+[OK] SNAKE: saved in 1.8s
+[OK] HS107: saved in 3.7s
+[OK] NYSTROM5: saved in 5.6s
+[OK] AIRPORT: saved in 28.2s
+[OK] HIMMELBD: saved in 1.5s
+[OK] PALMER5E: saved in 3.7s
+[OK] CSFI1: saved in 2.3s
+[OK] SYNTHES2: saved in 4.6s
+[OK] BROWNDEN: saved in 1.8s
+[OK] HS93: saved in 3.0s
+[OK] PALMER3B: saved in 2.5s
+[OK] ACOPP30: saved in 24.5s
+[OK] ACOPR30: saved in 24.8s
+[OK] PALMER3E: saved in 3.4s
+[OK] YFITNE: saved in 1.9s
+[OK] PFIT1: saved in 2.0s
+[OK] ACOPR14: saved in 15.3s
+[OK] HS1: saved in 1.8s
+[OK] ORTHREGB: saved in 9.6s
+[OK] SYNTHES3: saved in 5.7s
+[OK] HELIX: saved in 1.8s
+[OK] TRO6X2: saved in 15.7s
+[OK] SPIRAL: saved in 2.5s
+[OK] PFIT4: saved in 1.8s
+[OK] HS70: saved in 2.1s
+[OK] HS17: saved in 1.8s
+[OK] HS11: saved in 1.4s
+[OK] DECONVNE: saved in 17.5s
+[OK] PALMER1B: saved in 2.2s
+[OK] HS100: saved in 3.0s
+[OK] HS89: saved in 2.7s
+[OK] HS99EXP: saved in 9.7s
+[OK] HUMPS: saved in 1.9s
+[OK] ERRINBAR: saved in 6.8s
+[OK] SYNTHES1: saved in 2.9s
+[OK] HS42: saved in 2.2s
+[OK] BYRDSPHR: saved in 1.9s
+[OK] PORTFL3: saved in 5.3s
+[OK] POLAK3: saved in 4.9s
+[OK] FLETCHER: saved in 2.4s
+[OK] MAKELA1: saved in 2.2s
+[OK] CLUSTER: saved in 1.5s
+[OK] HAIFAS: saved in 5.3s
+[OK] CRESC50: saved in 3.2s
+[OK] LAKES: saved in 26.7s
+[OK] HATFLDD: saved in 2.2s
+[SKIP] PALMER4B: in CUTEst crash blacklist
+[OK] HIMMELP6: saved in 1.6s
+[OK] BT2: saved in 2.0s
+[OK] PALMER5B: saved in 3.8s
+[OK] HS33: saved in 1.7s
+[OK] HS34: saved in 1.8s
+[OK] HS32: saved in 1.9s
+[OK] ROSENMMX: saved in 2.9s
+[OK] HS91: saved in 2.7s
+[OK] CB2: saved in 1.6s
+[OK] CANTILVR: saved in 2.5s
+[OK] HS92: saved in 2.6s
+[OK] HS26: saved in 1.9s
+[OK] POLAK5: saved in 1.8s
+[OK] CUBE: saved in 1.7s
+[OK] VIBRBEAM: saved in 3.6s
+[OK] ZY2: saved in 1.9s
+[OK] HIMMELBE: saved in 2.0s
+[OK] S365: saved in 3.1s
+[OK] PORTFL6: saved in 5.1s
+[OK] HEART6LS: saved in 2.9s
+[OK] BT5: saved in 1.8s
+[OK] HS73: saved in 2.3s
+[OK] HIMMELP3: saved in 1.4s
+[OK] PFIT2: saved in 1.9s
+[OK] BT12: saved in 3.0s
+[OK] HAIFAM: saved in 33.2s
+[OK] FCCU: saved in 7.2s
+[OK] PALMER3A: saved in 3.0s
+[OK] HS69: saved in 2.1s
+[OK] DEMBO7: saved in 6.0s
+[OK] TRUSPYR2: saved in 4.1s
+[OK] LEAKNET: saved in 31.0s
+[OK] BROWNBS: saved in 1.5s
+[OK] HEART8LS: saved in 4.0s
+[OK] PALMER3: saved in 2.5s
+[OK] MAKELA2: saved in 1.8s
+[OK] HS23: saved in 1.5s
+[OK] HS79: saved in 2.7s
+[WARN] ZAMB2-10: LLM call failed after 1 retries: ValueError: No JSON array/object candidate found in LLM output: [[50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0 (1/2)
+[WARN] ZAMB2-10: LLM call failed after 1 retries: ValueError: No JSON array/object candidate found in LLM output: [[50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,2.0,40.0,50.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0 (2/2)
+[FAIL] ZAMB2-10: elapsed=66.6s
+[OK] READING6: saved in 33.2s
+[OK] DECONVB: saved in 17.3s
+[OK] MARATOS: saved in 1.5s
+[OK] S365MOD: saved in 3.1s
+[OK] OSBORNEA: saved in 2.6s
+[OK] HS46: saved in 2.7s
+[OK] HS18: saved in 1.5s
+[OK] LOOTSMA: saved in 1.8s
+[OK] HS84: saved in 2.2s
+[OK] PALMER8A: saved in 3.0s
+[OK] HYPCIR: saved in 1.5s
+[OK] HS40: saved in 2.1s
+[OK] RSNBRNE: saved in 1.4s
+[OK] TRO4X4: saved in 24.3s
+[OK] CSFI2: saved in 2.3s
+[OK] HS10: saved in 1.5s
+[OK] BT3: saved in 2.6s
+[OK] DISC2: saved in 9.3s
+[OK] POWELLSQ: saved in 1.7s
+[OK] HS64: saved in 2.0s
+[OK] TENBARS3: saved in 7.0s
+[OK] MIFFLIN2: saved in 1.8s
+[OK] BATCH: saved in 17.8s
+[OK] HS25: saved in 1.7s
+[OK] HS83: saved in 2.5s
+[OK] GROUPING: saved in 32.4s
+[OK] HS72: saved in 2.3s
+[OK] MESH: saved in 14.4s
+[OK] HATFLDF: saved in 1.7s
+[OK] GIGOMEZ2: saved in 1.7s
+[OK] MADSEN: saved in 1.9s
+[OK] PFIT4LS: saved in 1.9s
+[OK] ZECEVIC3: saved in 1.7s
+[OK] ZECEVIC4: saved in 1.4s
+[OK] HS75: saved in 2.2s
+[OK] HS12: saved in 1.6s
+[OK] EXPFIT: saved in 1.8s
+[OK] PALMER4: saved in 2.3s
+[OK] BT7: saved in 2.6s
+[OK] HS30: saved in 1.6s
+[OK] HS20: saved in 1.6s
+[OK] PALMER6A: saved in 2.9s
+[OK] MWRIGHT: saved in 2.5s
+[OK] TENBARS4: saved in 6.0s
+[OK] HS65: saved in 1.9s
+[OK] BT4: saved in 1.7s
+[OK] PALMER5C: saved in 3.0s
+[OK] ARGAUSS: saved in 1.9s
+[OK] PSPDOC: saved in 2.7s
+[OK] ALSOTAME: saved in 1.3s
+[OK] TRO5X5: saved in 34.1s
+[OK] HALDMADS: saved in 3.2s
+[OK] TENBARS1: saved in 6.5s
+[OK] BT11: saved in 2.7s
+[OK] PALMER5D: saved in 2.2s
+[OK] HS6: saved in 1.4s
+[OK] HATFLDG: saved in 8.1s
+[OK] HS108: saved in 3.5s
+[OK] ANTWERP: saved in 10.2s
+[OK] BEALE: saved in 1.9s
+[OK] HS95: saved in 3.2s
+[OK] CB3: saved in 2.0s
+[OK] HS57: saved in 1.4s
+[OK] BT13: saved in 2.5s
+[OK] HIMMELP2: saved in 1.4s
+[OK] PFIT3: saved in 1.6s
+[OK] HS109: saved in 3.8s
+[OK] DENSCHNC: saved in 1.7s
+[OK] POLAK1: saved in 1.7s
+[OK] PORTFL4: saved in 5.5s
+[OK] METHANL8: saved in 11.2s
+[OK] TRIGGER: saved in 2.9s
+[OK] BT9: saved in 2.1s
+[OK] HS13: saved in 1.5s
+[OK] CHACONN2: saved in 1.8s
+[OK] PALMER6E: saved in 4.0s
+[OK] DENSCHNF: saved in 1.6s
+[OK] ACOPP14: saved in 13.8s
+[OK] TRIMLOSS: saved in 33.6s
+[OK] GOTTFR: saved in 1.5s
+[OK] HS68: saved in 2.4s
+[OK] BT6: saved in 2.2s
+[OK] PFIT3LS: saved in 1.9s
+[OK] HS100LNP: saved in 3.1s
+[OK] PALMER4E: saved in 3.1s
+[OK] HS31: saved in 1.6s
+[OK] S316-322: saved in 1.6s
+[OK] SINEVAL: saved in 1.8s
+[WARN] ZAMB2-11: LLM xs[0] invalid: LLM x length mismatch: expected 264, got 244 (1/2)
+[WARN] ZAMB2-11: LLM xs[0] invalid: LLM x length mismatch: expected 264, got 224 (2/2)
+[FAIL] ZAMB2-11: elapsed=60.3s
+[OK] HIMMELP4: saved in 1.7s
+[WARN] SSEBNLN: LLM call failed after 1 retries: ValueError: No JSON array/object candidate found in LLM output: [[70.0,90.0,25.0,0.0,0.0,225.0,240000.0,3500.0,70.0,90.0,25.0,0.0,0.0,225.0,240000.0,3500.0,70.0,90.0,25.0,0.0,0.0,225.0,240000.0,3500.0,70.0,90.0,25.0,0.0,0.0,225.0,240000.0,3500.0,70.0,90.0,25.0,0.0,0.0,225.0,240000.0,3500.0,70.0,90.0,25.0,0.0,0.0,225.0,240000.0,3500.0,70.0,90.0,0.0,0.0,0.0,0.0,0. (1/2)
+[WARN] SSEBNLN: LLM call failed after 1 retries: ValueError: No JSON array/object candidate found in LLM output: [[70.0,90.0,25.0,0.0,0.0,225.0,240000.0,3500.0,70.0,90.0,25.0,0.0,0.0,225.0,240000.0,3500.0,70.0,90.0,25.0,0.0,0.0,225.0,240000.0,3500.0,70.0,90.0,25.0,0.0,0.0,225.0,240000.0,3500.0,70.0,90.0,25.0,0.0,0.0,225.0,240000.0,3500.0,70.0,90.0,25.0,0.0,0.0,225.0,240000.0,3500.0,70.0,90.0,0.0,0.0,0.0,0.0,0. (2/2)
+[FAIL] SSEBNLN: elapsed=66.4s
+[OK] HS47: saved in 2.6s
+[SKIP] KOWOSB: in CUTEst crash blacklist
+[OK] MISTAKE: saved in 3.6s
+[OK] HS22: saved in 1.5s
+[OK] POLAK4: saved in 1.8s
+[OK] MSS1: saved in 29.9s
+[OK] HS113: saved in 3.8s
+[OK] HS77: saved in 2.3s
+[OK] POWELLBS: saved in 1.7s
+[OK] PALMER7E: saved in 3.1s
+[OK] LAUNCH: saved in 9.3s
+[OK] HS59: saved in 1.4s
+[WARN] S308: LLM xs[3] invalid: LLM x length mismatch: expected 2, got 3 (1/2)
+[OK] S308: saved in 3.1s
+[OK] HEART8: saved in 3.6s
+[OK] CRESC100: saved in 2.9s
+[OK] PFIT2LS: saved in 1.8s
+[OK] HS8: saved in 1.5s
+[OK] HS103: saved in 3.2s
+[OK] BT8: saved in 2.5s
+[OK] PALMER6C: saved in 3.5s
+[OK] DECONVC: saved in 17.1s
+[OK] PRODPL0: saved in 20.4s
+[OK] TRO3X3: saved in 10.7s
+[OK] WEEDS: saved in 1.7s
+[OK] PALMER8E: saved in 3.4s
+[OK] PALMER2A: saved in 3.0s
+[OK] BLEACHNG: saved in 4.1s
+[OK] CUBENE: saved in 2.0s
+[OK] DENSCHNB: saved in 1.4s
+[OK] HS101: saved in 3.1s
+[DONE] prepared=0, generated=203, skipped=2, failed=3

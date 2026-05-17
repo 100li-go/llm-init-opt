@@ -1,0 +1,177 @@
+{
+  "mode": "llm_k5",
+  "name": "HS84",
+  "route_key": "NLC:SmoothNLP",
+  "payload": {
+    "n": 5,
+    "m": 3,
+    "x0": [
+      2.52,
+      2.0,
+      37.5,
+      9.25,
+      6.8
+    ],
+    "bounds": {
+      "has_bounds": true,
+      "bl": [
+        0.0,
+        1.2,
+        20.0,
+        9.0,
+        6.5
+      ],
+      "bu": [
+        1000.0,
+        2.4,
+        60.0,
+        9.3,
+        7.0
+      ]
+    },
+    "objective": {
+      "f0": -2351243.4831,
+      "gnorm0": 2419413.5197,
+      "g0": [
+        -942693.8425,
+        -379291.5637,
+        394.8714,
+        -1200705.2119,
+        -1838296.7242
+      ]
+    },
+    "constraints": {
+      "tag": "NLC",
+      "cl": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cu": [
+        294000.0,
+        294000.0,
+        277200.0
+      ],
+      "c0": [
+        32745.8268,
+        96991.9693,
+        130368.4262
+      ],
+      "max_violation0": 0.0,
+      "sum_violation0": 0.0,
+      "n_violated0": 0,
+      "topk": [
+        {
+          "i": 0,
+          "type": "ineq",
+          "sense": "range",
+          "cl": 0.0,
+          "cu": 294000.0,
+          "c0": 32745.8268,
+          "violation": 0.0,
+          "jacobian_row_sparse": [
+            {
+              "j": 4,
+              "val": 39592.6272
+            },
+            {
+              "j": 0,
+              "val": 12994.3757
+            },
+            {
+              "j": 3,
+              "val": 12867.6038
+            },
+            {
+              "j": 1,
+              "val": 7386.4995
+            },
+            {
+              "j": 2,
+              "val": -101.8783
+            }
+          ]
+        },
+        {
+          "i": 1,
+          "type": "ineq",
+          "sense": "range",
+          "cl": 0.0,
+          "cu": 294000.0,
+          "c0": 96991.9693,
+          "violation": 0.0,
+          "jacobian_row_sparse": [
+            {
+              "j": 0,
+              "val": 38488.8767
+            },
+            {
+              "j": 4,
+              "val": 33205.5007
+            },
+            {
+              "j": 3,
+              "val": 25796.9476
+            },
+            {
+              "j": 1,
+              "val": 10988.5444
+            },
+            {
+              "j": 2,
+              "val": 32.632
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "type": "ineq",
+          "sense": "range",
+          "cl": 0.0,
+          "cu": 277200.0,
+          "c0": 130368.4262,
+          "violation": 0.0,
+          "jacobian_row_sparse": [
+            {
+              "j": 4,
+              "val": 78090.1279
+            },
+            {
+              "j": 0,
+              "val": 51733.5024
+            },
+            {
+              "j": 3,
+              "val": 41940.5515
+            },
+            {
+              "j": 1,
+              "val": 18624.5239
+            },
+            {
+              "j": 2,
+              "val": -70.3047
+            }
+          ]
+        }
+      ]
+    },
+    "scales": {
+      "x0_norm2": 39.3497,
+      "suggested_step_norm": 1.0,
+      "max_abs_x_suggested": 375.0
+    },
+    "problem_properties": {
+      "objective": "quadratic",
+      "constraints": "quadratic",
+      "regular": true,
+      "degree": 2,
+      "origin": "academic",
+      "internal": false,
+      "n": 5,
+      "m": 3
+    }
+  },
+  "system_prompt": "你是数值优化 warm-start 专家。只输出一个 JSON 数组（单行），其长度必须恰好等于 K=5。该数组的每个元素都必须是长度为 n 的 JSON 数组。所有数值必须有限。当 bounds.has_bounds=true 时，必须满足所有有限边界；对 |bl|>=1e20 或 |bu|>=1e20 的边界，按无界处理。禁止输出 JSON 对象、解释文本、注释或 markdown。",
+  "user_prompt": "策略：当前约束已基本可行（max_violation0 接近 0）。优先保持可行性，不显著增大 violation；在此基础上改进 objective，并避免极端值。\n可参考 topk 的 jacobian_row_sparse 做小幅、稳定的方向性调整。\n\n5 个候选的分工如下（按顺序给出 5 个数组）：\n(1) 保守解：尽量接近 x0；若 max_violation0 接近 0，则优先保持可行性不变差。\n(2) 强可行化-协同：利用 topk 的 jacobian_row_sparse 协同降低 max_violation0。\n(3) 强可行化-另一方向：与(2)不同变量组合/符号方向，仍以降低 violation 为目标。\n(4) 目标改进-受限可行化：在(2)/(3)附近沿 -objective.g0 小步改进 objective，并保持 violation 不显著变差。\n(5) 探索解：与前 4 个明显不同，允许相对 x0 更大偏移但避免极端值。\n若 objective.g0 缺失，则 (4) 改为(2)/(3)附近的不同方向小扰动且保持 violation 不显著增大。\n\n下面给出 payload（UTF-8 JSON，按其中字段进行推理）：\n{\n  \"n\": 5,\n  \"m\": 3,\n  \"x0\": [\n    2.52,\n    2.0,\n    37.5,\n    9.25,\n    6.8\n  ],\n  \"bounds\": {\n    \"has_bounds\": true,\n    \"bl\": [\n      0.0,\n      1.2,\n      20.0,\n      9.0,\n      6.5\n    ],\n    \"bu\": [\n      1000.0,\n      2.4,\n      60.0,\n      9.3,\n      7.0\n    ]\n  },\n  \"objective\": {\n    \"f0\": -2351243.4831,\n    \"gnorm0\": 2419413.5197,\n    \"g0\": [\n      -942693.8425,\n      -379291.5637,\n      394.8714,\n      -1200705.2119,\n      -1838296.7242\n    ]\n  },\n  \"constraints\": {\n    \"tag\": \"NLC\",\n    \"cl\": [\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"cu\": [\n      294000.0,\n      294000.0,\n      277200.0\n    ],\n    \"c0\": [\n      32745.8268,\n      96991.9693,\n      130368.4262\n    ],\n    \"max_violation0\": 0.0,\n    \"sum_violation0\": 0.0,\n    \"n_violated0\": 0,\n    \"topk\": [\n      {\n        \"i\": 0,\n        \"type\": \"ineq\",\n        \"sense\": \"range\",\n        \"cl\": 0.0,\n        \"cu\": 294000.0,\n        \"c0\": 32745.8268,\n        \"violation\": 0.0,\n        \"jacobian_row_sparse\": [\n          {\n            \"j\": 4,\n            \"val\": 39592.6272\n          },\n          {\n            \"j\": 0,\n            \"val\": 12994.3757\n          },\n          {\n            \"j\": 3,\n            \"val\": 12867.6038\n          },\n          {\n            \"j\": 1,\n            \"val\": 7386.4995\n          },\n          {\n            \"j\": 2,\n            \"val\": -101.8783\n          }\n        ]\n      },\n      {\n        \"i\": 1,\n        \"type\": \"ineq\",\n        \"sense\": \"range\",\n        \"cl\": 0.0,\n        \"cu\": 294000.0,\n        \"c0\": 96991.9693,\n        \"violation\": 0.0,\n        \"jacobian_row_sparse\": [\n          {\n            \"j\": 0,\n            \"val\": 38488.8767\n          },\n          {\n            \"j\": 4,\n            \"val\": 33205.5007\n          },\n          {\n            \"j\": 3,\n            \"val\": 25796.9476\n          },\n          {\n            \"j\": 1,\n            \"val\": 10988.5444\n          },\n          {\n            \"j\": 2,\n            \"val\": 32.632\n          }\n        ]\n      },\n      {\n        \"i\": 2,\n        \"type\": \"ineq\",\n        \"sense\": \"range\",\n        \"cl\": 0.0,\n        \"cu\": 277200.0,\n        \"c0\": 130368.4262,\n        \"violation\": 0.0,\n        \"jacobian_row_sparse\": [\n          {\n            \"j\": 4,\n            \"val\": 78090.1279\n          },\n          {\n            \"j\": 0,\n            \"val\": 51733.5024\n          },\n          {\n            \"j\": 3,\n            \"val\": 41940.5515\n          },\n          {\n            \"j\": 1,\n            \"val\": 18624.5239\n          },\n          {\n            \"j\": 2,\n            \"val\": -70.3047\n          }\n        ]\n      }\n    ]\n  },\n  \"scales\": {\n    \"x0_norm2\": 39.3497,\n    \"suggested_step_norm\": 1.0,\n    \"max_abs_x_suggested\": 375.0\n  },\n  \"problem_properties\": {\n    \"objective\": \"quadratic\",\n    \"constraints\": \"quadratic\",\n    \"regular\": true,\n    \"degree\": 2,\n    \"origin\": \"academic\",\n    \"internal\": false,\n    \"n\": 5,\n    \"m\": 3\n  }\n}"
+}

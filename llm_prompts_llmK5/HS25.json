@@ -1,0 +1,56 @@
+{
+  "mode": "llm_k5",
+  "name": "HS25",
+  "route_key": "B:LS",
+  "payload": {
+    "n": 3,
+    "m": 0,
+    "x0": [
+      100.0,
+      12.5,
+      3.0
+    ],
+    "bounds": {
+      "has_bounds": true,
+      "bl": [
+        0.1,
+        0.0,
+        0.0
+      ],
+      "bu": [
+        100.0,
+        25.6,
+        5.0
+      ]
+    },
+    "objective": {
+      "f0": 32.8349,
+      "gnorm0": 2.0021263304641093e-08,
+      "g0": [
+        -7.729789383013998e-11,
+        -1.757065489193685e-09,
+        1.9943864475473702e-08
+      ]
+    },
+    "constraints": {
+      "tag": "B"
+    },
+    "scales": {
+      "x0_norm2": 100.8228,
+      "suggested_step_norm": 1.0,
+      "max_abs_x_suggested": 1000.0
+    },
+    "problem_properties": {
+      "objective": "sum of squares",
+      "constraints": "bound",
+      "regular": true,
+      "degree": 2,
+      "origin": "academic",
+      "internal": false,
+      "n": 3,
+      "m": 0
+    }
+  },
+  "system_prompt": "你是数值优化 warm-start 专家。只输出一个 JSON 数组（单行），其长度必须恰好等于 K=5。该数组的每个元素都必须是长度为 n 的 JSON 数组。所有数值必须有限。当 bounds.has_bounds=true 时，必须满足所有有限边界；对 |bl|>=1e20 或 |bu|>=1e20 的边界，按无界处理。禁止输出 JSON 对象、解释文本、注释或 markdown。",
+  "user_prompt": "策略：仅有边界约束，先确保所有有限边界满足，再优化 objective。\n可在 x0 附近微调，避免触发过大步长。\n\n5 个候选的分工如下（按顺序给出 5 个数组）：\n(1) 保守可行解：在边界内尽量接近 x0，优先向边界内侧移动。\n(2) 梯度小步下降（保持可行）：沿 -objective.g0 小步并满足全部有限边界。\n(3) 梯度中步下降（保持可行）：沿 -objective.g0 中步并满足全部有限边界。\n(4) 边界探索解：1~2 个变量接近有限边界（不越界），其余保持温和。\n(5) 保守+扰动：x0 附近不同方向的小扰动版本，需可行且与前 4 个明显不同。\n若 objective.g0 缺失，则以边界内不同方向扰动 + 边界探索替代 (2)(3)。\n\n下面给出 payload（UTF-8 JSON，按其中字段进行推理）：\n{\n  \"n\": 3,\n  \"m\": 0,\n  \"x0\": [\n    100.0,\n    12.5,\n    3.0\n  ],\n  \"bounds\": {\n    \"has_bounds\": true,\n    \"bl\": [\n      0.1,\n      0.0,\n      0.0\n    ],\n    \"bu\": [\n      100.0,\n      25.6,\n      5.0\n    ]\n  },\n  \"objective\": {\n    \"f0\": 32.8349,\n    \"gnorm0\": 2.0021263304641093e-08,\n    \"g0\": [\n      -7.729789383013998e-11,\n      -1.757065489193685e-09,\n      1.9943864475473702e-08\n    ]\n  },\n  \"constraints\": {\n    \"tag\": \"B\"\n  },\n  \"scales\": {\n    \"x0_norm2\": 100.8228,\n    \"suggested_step_norm\": 1.0,\n    \"max_abs_x_suggested\": 1000.0\n  },\n  \"problem_properties\": {\n    \"objective\": \"sum of squares\",\n    \"constraints\": \"bound\",\n    \"regular\": true,\n    \"degree\": 2,\n    \"origin\": \"academic\",\n    \"internal\": false,\n    \"n\": 3,\n    \"m\": 0\n  }\n}"
+}

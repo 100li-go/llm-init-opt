@@ -1,0 +1,118 @@
+[INFO] multi_output_enabled=True, suffix=_llmK5, results_dir=results/new_target_routes_llmK5
+=== RQ1: Success Rate ===
+{'wilcoxon_stat': np.float64(210.0), 'p_value': np.float64(0.9999997940720933), 'n': 202}
+=== RQ2: nfev ===
+{'wilcoxon_stat': np.float64(6462.5), 'p_value': np.float64(0.9999998529611128), 'median_ratio': np.float64(1.6), 'n': np.int64(159)}
+=== All arm comparisons (problem-level, capped metrics included) ===
+               metric              compare_pair alternative  wilcoxon_stat      p_value  paired_n  pair_total_n  median_left  median_right   median_diff  median_ratio  llm_present_rate
+          success_any         llm_vs_random_raw     greater           86.0 9.999999e-01       202           202 1.000000e+00  1.000000e+00  0.000000e+00           NaN          0.975845
+          success_any        llm_vs_random_post     greater           37.0 1.000000e+00       202           202 1.000000e+00  1.000000e+00  0.000000e+00           NaN          0.975845
+          success_any             llm_vs_cutest     greater           18.0 5.000000e-01       202           202 1.000000e+00  1.000000e+00  0.000000e+00           NaN          0.975845
+          success_any      random_raw_vs_cutest     greater          817.0 7.758622e-08       207           207 1.000000e+00  1.000000e+00  0.000000e+00           NaN          0.975845
+          success_any     random_post_vs_cutest     greater          629.0 4.821303e-08       207           207 1.000000e+00  1.000000e+00  0.000000e+00           NaN          0.975845
+          success_any random_raw_vs_random_post     greater           14.0 2.071081e-01       207           207 1.000000e+00  1.000000e+00  0.000000e+00           NaN          0.975845
+            best_nfev         llm_vs_random_raw        less         6462.5 9.999999e-01       159           202 1.500000e+01  4.000000e+00  3.000000e+00      1.600000          0.975845
+            best_nfev        llm_vs_random_post        less         5928.5 9.999777e-01       161           202 1.500000e+01  9.000000e+00  2.000000e+00      1.172043          0.975845
+            best_nfev             llm_vs_cutest        less          800.5 5.462255e-06       159           202 1.500000e+01  1.400000e+01  0.000000e+00      1.000000          0.975845
+            best_nfev      random_raw_vs_cutest        less         2153.0 4.303741e-08       164           207 4.000000e+00  1.500000e+01 -3.000000e+00      0.503521          0.975845
+            best_nfev     random_post_vs_cutest        less         2604.5 1.014460e-05       166           207 9.500000e+00  1.450000e+01 -2.000000e+00      0.828431          0.975845
+            best_nfev random_raw_vs_random_post        less          477.0 1.378092e-04       198           207 1.000000e+00  8.000000e+00  0.000000e+00      1.000000          0.975845
+            best_time         llm_vs_random_raw        less         4684.0 1.974477e-03       159           202 1.893695e-02  2.871898e-02 -5.115196e-05      0.975533          0.975845
+            best_time        llm_vs_random_post        less         6326.0 3.713474e-01       161           202 1.999268e-02  2.541397e-02  2.403580e-04      1.066250          0.975845
+            best_time             llm_vs_cutest        less          528.0 5.667685e-24       159           202 1.999268e-02  6.441818e-02 -2.115720e-02      0.447905          0.975845
+            best_time      random_raw_vs_cutest        less         5890.0 7.540833e-02       164           207 3.345431e-02  6.621380e-02 -9.843399e-03      0.537316          0.975845
+            best_time     random_post_vs_cutest        less         4381.0 1.971462e-05       166           207 2.784251e-02  6.579674e-02 -1.856809e-02      0.499633          0.975845
+            best_time random_raw_vs_random_post        less        11345.0 9.679277e-01       198           207 1.017185e-01  3.582515e-02  8.911348e-05      1.006956          0.975845
+         best_f_final         llm_vs_random_raw        less         1040.0 5.209707e-15       159           202 4.625153e-10  2.128087e+00 -1.788770e-01           NaN          0.975845
+         best_f_final        llm_vs_random_post        less         1928.5 6.927594e-09       161           202 4.748117e-10  4.007351e-02 -8.748652e-27           NaN          0.975845
+         best_f_final             llm_vs_cutest        less         1732.0 1.615916e-04       159           202 5.305420e-10  2.110849e-09  0.000000e+00           NaN          0.975845
+         best_f_final      random_raw_vs_cutest        less         8112.0 1.000000e+00       164           207 8.261127e-01  6.670581e-10  2.174313e-02           NaN          0.975845
+         best_f_final     random_post_vs_cutest        less         6973.0 9.999993e-01       166           207 1.607880e-02  8.035743e-10  0.000000e+00           NaN          0.975845
+         best_f_final random_raw_vs_random_post        less         3608.0 9.999861e-01       198           207 3.907378e-02  2.115176e-04  0.000000e+00           NaN          0.975845
+best_nfev_cost_capped         llm_vs_random_raw        less        12275.5 1.000000e+00       202           202 2.000000e+01  1.000000e+00  6.500000e+00      3.000000          0.975845
+best_nfev_cost_capped        llm_vs_random_post        less        10957.5 1.000000e+00       202           202 2.000000e+01  8.000000e+00  3.000000e+00      1.600000          0.975845
+best_nfev_cost_capped             llm_vs_cutest        less         1154.5 6.190831e-05       202           202 2.000000e+01  2.100000e+01  0.000000e+00      1.000000          0.975845
+best_nfev_cost_capped      random_raw_vs_cutest        less         2722.0 2.067967e-14       207           207 1.000000e+00  2.100000e+01 -9.000000e+00      0.333333          0.975845
+best_nfev_cost_capped     random_post_vs_cutest        less         2894.5 4.943570e-12       207           207 8.000000e+00  2.100000e+01 -3.000000e+00      0.600000          0.975845
+best_nfev_cost_capped random_raw_vs_random_post        less          606.0 1.604158e-04       207           207 1.000000e+00  8.000000e+00  0.000000e+00      1.000000          0.975845
+best_time_cost_capped         llm_vs_random_raw        less        11473.0 9.453865e-01       202           202 3.031281e-02  1.564955e-01  3.595350e-04      1.113893          0.975845
+best_time_cost_capped        llm_vs_random_post        less        12395.0 9.995154e-01       202           202 3.031281e-02  3.886063e-02  1.028956e-03      1.124700          0.975845
+best_time_cost_capped             llm_vs_cutest        less         1178.0 5.508001e-21       202           202 3.031281e-02  8.673893e-02 -1.587231e-02      0.580757          0.975845
+best_time_cost_capped      random_raw_vs_cutest        less         6686.0 1.744179e-06       207           207 1.603187e-01  9.206690e-02 -2.335883e-02      0.281356          0.975845
+best_time_cost_capped     random_post_vs_cutest        less         4774.0 2.278838e-11       207           207 3.968023e-02  9.206690e-02 -2.810391e-02      0.325010          0.975845
+best_time_cost_capped random_raw_vs_random_post        less        11752.0 9.377745e-01       207           207 1.603187e-01  3.968023e-02  5.824701e-05      1.006191          0.975845
+Figures saved.
+Report saved to results/new_target_routes_llmK5/report.txt
+============================================================
+阶段一结论报告
+============================================================
+[cutest] 至少成功一次的题数: 168/207
+[random_raw] 至少成功一次的题数: 202/207
+[random_post] 至少成功一次的题数: 200/207
+[llm] 至少成功一次的题数: 163/202
+
+RQ1 成功率检验 (Wilcoxon): stat=210.0000, p=1.0000, n=202
+RQ2 nfev检验 (Wilcoxon): stat=6462.5000, p=1.0000, median_ratio=1.6000, n=159
+
+Unbounded:
+  [cutest] success_any=68, median_best_nfev=9.5
+  [random_raw] success_any=92, median_best_nfev=1.0
+  [random_post] success_any=90, median_best_nfev=1.0
+  [llm] success_any=67, median_best_nfev=7.0
+Bounded:
+  [cutest] success_any=100, median_best_nfev=16.5
+  [random_raw] success_any=110, median_best_nfev=10.0
+  [random_post] success_any=110, median_best_nfev=13.0
+  [llm] success_any=96, median_best_nfev=17.0
+
+Route-level (per-problem weighted) success_any_rate deltas from LLM
+  LLM - random_raw:
+    U:LS: +0.048 (llm=1.000, random_raw=0.952)
+    NLC:LS: +0.000 (llm=1.000, random_raw=1.000)
+    LEB:LS: +0.000 (llm=0.833, random_raw=0.833)
+    B:LS: -0.089 (llm=0.870, random_raw=0.958)
+    NLC:SmoothNLP: -0.233 (llm=0.754, random_raw=0.986)
+  LLM - random_post:
+    U:LS: +0.048 (llm=1.000, random_post=0.952)
+    NLC:LS: +0.000 (llm=1.000, random_post=1.000)
+    LEB:LS: +0.000 (llm=0.833, random_post=0.833)
+    B:LS: -0.089 (llm=0.870, random_post=0.958)
+    NLC:SmoothNLP: -0.219 (llm=0.754, random_post=0.972)
+
+All-arm pairwise stats (problem-level)
+  success_any | llm_vs_random_raw: p=1, paired_n=202/202, median_diff=0
+  success_any | llm_vs_random_post: p=1, paired_n=202/202, median_diff=0
+  success_any | llm_vs_cutest: p=0.5, paired_n=202/202, median_diff=0
+  success_any | random_raw_vs_cutest: p=7.759e-08, paired_n=207/207, median_diff=0
+  success_any | random_post_vs_cutest: p=4.821e-08, paired_n=207/207, median_diff=0
+  success_any | random_raw_vs_random_post: p=0.2071, paired_n=207/207, median_diff=0
+  best_nfev | llm_vs_random_raw: p=1, paired_n=159/202, median_diff=3
+  best_nfev | llm_vs_random_post: p=1, paired_n=161/202, median_diff=2
+  best_nfev | llm_vs_cutest: p=5.462e-06, paired_n=159/202, median_diff=0
+  best_nfev | random_raw_vs_cutest: p=4.304e-08, paired_n=164/207, median_diff=-3
+  best_nfev | random_post_vs_cutest: p=1.014e-05, paired_n=166/207, median_diff=-2
+  best_nfev | random_raw_vs_random_post: p=0.0001378, paired_n=198/207, median_diff=0
+  best_time | llm_vs_random_raw: p=0.001974, paired_n=159/202, median_diff=-5.115e-05
+  best_time | llm_vs_random_post: p=0.3713, paired_n=161/202, median_diff=0.0002404
+  best_time | llm_vs_cutest: p=5.668e-24, paired_n=159/202, median_diff=-0.02116
+  best_time | random_raw_vs_cutest: p=0.07541, paired_n=164/207, median_diff=-0.009843
+  best_time | random_post_vs_cutest: p=1.971e-05, paired_n=166/207, median_diff=-0.01857
+  best_time | random_raw_vs_random_post: p=0.9679, paired_n=198/207, median_diff=8.911e-05
+  best_f_final | llm_vs_random_raw: p=5.21e-15, paired_n=159/202, median_diff=-0.1789
+  best_f_final | llm_vs_random_post: p=6.928e-09, paired_n=161/202, median_diff=-8.749e-27
+  best_f_final | llm_vs_cutest: p=0.0001616, paired_n=159/202, median_diff=0
+  best_f_final | random_raw_vs_cutest: p=1, paired_n=164/207, median_diff=0.02174
+  best_f_final | random_post_vs_cutest: p=1, paired_n=166/207, median_diff=0
+  best_f_final | random_raw_vs_random_post: p=1, paired_n=198/207, median_diff=0
+  best_nfev_cost_capped | llm_vs_random_raw: p=1, paired_n=202/202, median_diff=6.5
+  best_nfev_cost_capped | llm_vs_random_post: p=1, paired_n=202/202, median_diff=3
+  best_nfev_cost_capped | llm_vs_cutest: p=6.191e-05, paired_n=202/202, median_diff=0
+  best_nfev_cost_capped | random_raw_vs_cutest: p=2.068e-14, paired_n=207/207, median_diff=-9
+  best_nfev_cost_capped | random_post_vs_cutest: p=4.944e-12, paired_n=207/207, median_diff=-3
+  best_nfev_cost_capped | random_raw_vs_random_post: p=0.0001604, paired_n=207/207, median_diff=0
+  best_time_cost_capped | llm_vs_random_raw: p=0.9454, paired_n=202/202, median_diff=0.0003595
+  best_time_cost_capped | llm_vs_random_post: p=0.9995, paired_n=202/202, median_diff=0.001029
+  best_time_cost_capped | llm_vs_cutest: p=5.508e-21, paired_n=202/202, median_diff=-0.01587
+  best_time_cost_capped | random_raw_vs_cutest: p=1.744e-06, paired_n=207/207, median_diff=-0.02336
+  best_time_cost_capped | random_post_vs_cutest: p=2.279e-11, paired_n=207/207, median_diff=-0.0281
+  best_time_cost_capped | random_raw_vs_random_post: p=0.9378, paired_n=207/207, median_diff=5.825e-05

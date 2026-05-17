@@ -9,3 +9,7 @@ build/
 *.parquet
 *.pdf
 logs/run.log
+
+# Keep only an empty placeholder for pycutest cache holder.
+pycutest_cache_holder/*
+!pycutest_cache_holder/.gitkeep

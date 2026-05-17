@@ -1,0 +1,215 @@
+[INFO] total_problems=208, request_timeout_sec=60, build_timeout_sec=600, max_attempts=2, llm_retries=1
+[INFO] PYCUTEST_CACHE=/mnt/d/project2/pycutest_cache_holder
+[INFO] prompt_dir=results/new_target_routes_llmK5/llm_prompts_llmK5, candidates_dir=results/new_target_routes_llmK5/llm_candidates_llmK5
+[INFO] multi_output_enabled=True, multi_k=5, mode_suffix=_llmK5
+[INFO] skip_crashy enabled, blacklist_size=3
+LLM候选初值生成:   0%|          | 0/208 [00:00<?, ?it/s]LLM候选初值生成:   0%|          | 1/208 [00:33<1:56:05, 33.65s/it][OK] HS78: prompt prepared in 33.6s
+LLM候选初值生成:   1%|          | 2/208 [01:06<1:54:36, 33.38s/it][OK] SNAKE: prompt prepared in 33.2s
+LLM候选初值生成:   1%|▏         | 3/208 [01:44<2:01:16, 35.50s/it][OK] HS107: prompt prepared in 38.0s
+LLM候选初值生成:   2%|▏         | 4/208 [02:21<2:02:04, 35.90s/it][OK] NYSTROM5: prompt prepared in 36.5s
+LLM候选初值生成:   2%|▏         | 5/208 [02:58<2:03:02, 36.37s/it][OK] AIRPORT: prompt prepared in 37.2s
+LLM候选初值生成:   3%|▎         | 6/208 [03:30<1:57:28, 34.89s/it][OK] HIMMELBD: prompt prepared in 32.0s
+LLM候选初值生成:   3%|▎         | 7/208 [04:03<1:54:17, 34.12s/it][OK] PALMER5E: prompt prepared in 32.5s
+LLM候选初值生成:   4%|▍         | 8/208 [04:37<1:54:05, 34.23s/it][OK] CSFI1: prompt prepared in 34.5s
+LLM候选初值生成:   4%|▍         | 9/208 [05:19<2:01:17, 36.57s/it][OK] SYNTHES2: prompt prepared in 41.7s
+LLM候选初值生成:   5%|▍         | 10/208 [05:53<1:58:21, 35.86s/it][OK] BROWNDEN: prompt prepared in 34.3s
+LLM候选初值生成:   5%|▌         | 11/208 [06:30<1:58:36, 36.12s/it][OK] HS93: prompt prepared in 36.7s
+LLM候选初值生成:   6%|▌         | 12/208 [07:06<1:57:41, 36.03s/it][OK] PALMER3B: prompt prepared in 35.8s
+LLM候选初值生成:   6%|▋         | 13/208 [07:41<1:56:20, 35.80s/it][OK] ACOPP30: prompt prepared in 35.3s
+LLM候选初值生成:   7%|▋         | 14/208 [08:11<1:50:20, 34.13s/it][OK] ACOPR30: prompt prepared in 30.3s
+LLM候选初值生成:   7%|▋         | 15/208 [08:41<1:45:18, 32.74s/it][OK] PALMER3E: prompt prepared in 29.5s
+LLM候选初值生成:   8%|▊         | 16/208 [09:27<1:57:36, 36.75s/it][OK] YFITNE: prompt prepared in 46.1s
+LLM候选初值生成:   8%|▊         | 17/208 [10:05<1:58:04, 37.09s/it][OK] PFIT1: prompt prepared in 37.9s
+LLM候选初值生成:   9%|▊         | 18/208 [10:41<1:56:57, 36.93s/it][OK] ACOPR14: prompt prepared in 36.6s
+LLM候选初值生成:   9%|▉         | 19/208 [11:14<1:52:12, 35.62s/it][OK] HS1: prompt prepared in 32.6s
+LLM候选初值生成:  10%|▉         | 20/208 [11:48<1:49:58, 35.10s/it][OK] ORTHREGB: prompt prepared in 33.9s
+LLM候选初值生成:  10%|█         | 21/208 [12:19<1:45:35, 33.88s/it][OK] SYNTHES3: prompt prepared in 31.0s
+LLM候选初值生成:  11%|█         | 22/208 [12:52<1:44:33, 33.73s/it][OK] HELIX: prompt prepared in 33.4s
+LLM候选初值生成:  11%|█         | 23/208 [13:31<1:48:34, 35.21s/it][OK] TRO6X2: prompt prepared in 38.7s
+LLM候选初值生成:  12%|█▏        | 24/208 [14:09<1:51:11, 36.26s/it][OK] SPIRAL: prompt prepared in 38.7s
+LLM候选初值生成:  12%|█▏        | 25/208 [14:43<1:48:14, 35.49s/it][OK] PFIT4: prompt prepared in 33.7s
+LLM候选初值生成:  12%|█▎        | 26/208 [15:16<1:45:17, 34.71s/it][OK] HS70: prompt prepared in 32.9s
+LLM候选初值生成:  13%|█▎        | 27/208 [15:49<1:43:08, 34.19s/it][OK] HS17: prompt prepared in 33.0s
+LLM候选初值生成:  13%|█▎        | 28/208 [16:20<1:39:19, 33.11s/it][OK] HS11: prompt prepared in 30.6s
+LLM候选初值生成:  14%|█▍        | 29/208 [16:52<1:38:35, 33.05s/it][OK] DECONVNE: prompt prepared in 32.9s
+LLM候选初值生成:  14%|█▍        | 30/208 [17:32<1:44:03, 35.07s/it][OK] PALMER1B: prompt prepared in 39.4s
+LLM候选初值生成:  15%|█▍        | 31/208 [18:07<1:42:55, 34.89s/it][OK] HS100: prompt prepared in 34.5s
+LLM候选初值生成:  15%|█▌        | 32/208 [18:51<1:50:31, 37.68s/it][OK] HS89: prompt prepared in 44.2s
+LLM候选初值生成:  16%|█▌        | 33/208 [19:32<1:53:01, 38.75s/it][OK] HS99EXP: prompt prepared in 41.2s
+LLM候选初值生成:  16%|█▋        | 34/208 [20:14<1:55:21, 39.78s/it][OK] HUMPS: prompt prepared in 42.2s
+LLM候选初值生成:  17%|█▋        | 35/208 [20:58<1:57:41, 40.82s/it][OK] ERRINBAR: prompt prepared in 43.2s
+LLM候选初值生成:  17%|█▋        | 36/208 [21:49<2:05:49, 43.89s/it][OK] SYNTHES1: prompt prepared in 51.1s
+LLM候选初值生成:  18%|█▊        | 37/208 [22:37<2:08:32, 45.10s/it][OK] HS42: prompt prepared in 47.9s
+LLM候选初值生成:  18%|█▊        | 38/208 [23:24<2:10:01, 45.89s/it][OK] BYRDSPHR: prompt prepared in 47.7s
+LLM候选初值生成:  19%|█▉        | 39/208 [24:08<2:07:31, 45.27s/it][OK] PORTFL3: prompt prepared in 43.8s
+LLM候选初值生成:  19%|█▉        | 40/208 [24:48<2:02:04, 43.60s/it][OK] POLAK3: prompt prepared in 39.7s
+LLM候选初值生成:  20%|█▉        | 41/208 [25:36<2:05:15, 45.00s/it][OK] FLETCHER: prompt prepared in 48.3s
+LLM候选初值生成:  20%|██        | 42/208 [26:22<2:05:03, 45.20s/it][OK] MAKELA1: prompt prepared in 45.7s
+LLM候选初值生成:  21%|██        | 43/208 [27:09<2:05:53, 45.78s/it][OK] CLUSTER: prompt prepared in 47.1s
+LLM候选初值生成:  21%|██        | 44/208 [27:52<2:02:57, 44.99s/it][OK] HAIFAS: prompt prepared in 43.1s
+LLM候选初值生成:  22%|██▏       | 45/208 [28:32<1:58:01, 43.44s/it][OK] CRESC50: prompt prepared in 39.8s
+LLM候选初值生成:  22%|██▏       | 46/208 [29:16<1:57:56, 43.68s/it][OK] LAKES: prompt prepared in 44.2s
+LLM候选初值生成:  23%|██▎       | 47/208 [30:06<2:01:57, 45.45s/it][OK] HATFLDD: prompt prepared in 49.6s
+[SKIP] PALMER4B: in CUTEst crash blacklist
+LLM候选初值生成:  24%|██▎       | 49/208 [30:53<1:33:53, 35.43s/it][OK] HIMMELP6: prompt prepared in 47.5s
+LLM候选初值生成:  24%|██▍       | 50/208 [31:39<1:40:13, 38.06s/it][OK] BT2: prompt prepared in 46.0s
+LLM候选初值生成:  25%|██▍       | 51/208 [32:23<1:43:34, 39.58s/it][OK] PALMER5B: prompt prepared in 43.9s
+LLM候选初值生成:  25%|██▌       | 52/208 [33:04<1:44:07, 40.05s/it][OK] HS33: prompt prepared in 41.3s
+LLM候选初值生成:  25%|██▌       | 53/208 [33:58<1:53:33, 43.96s/it][OK] HS34: prompt prepared in 54.0s
+LLM候选初值生成:  26%|██▌       | 54/208 [34:50<1:58:37, 46.22s/it][OK] HS32: prompt prepared in 51.9s
+LLM候选初值生成:  26%|██▋       | 55/208 [35:41<2:01:20, 47.59s/it][OK] ROSENMMX: prompt prepared in 50.9s
+LLM候选初值生成:  27%|██▋       | 56/208 [36:28<1:59:55, 47.34s/it][OK] HS91: prompt prepared in 46.7s
+LLM候选初值生成:  27%|██▋       | 57/208 [37:16<1:59:36, 47.52s/it][OK] CB2: prompt prepared in 48.0s
+LLM候选初值生成:  28%|██▊       | 58/208 [38:09<2:03:17, 49.31s/it][OK] CANTILVR: prompt prepared in 53.6s
+LLM候选初值生成:  28%|██▊       | 59/208 [39:04<2:06:34, 50.97s/it][OK] HS92: prompt prepared in 54.9s
+LLM候选初值生成:  29%|██▉       | 60/208 [39:55<2:05:48, 51.00s/it][OK] HS26: prompt prepared in 51.1s
+LLM候选初值生成:  29%|██▉       | 61/208 [40:42<2:01:45, 49.70s/it][OK] POLAK5: prompt prepared in 46.6s
+LLM候选初值生成:  30%|██▉       | 62/208 [41:33<2:01:58, 50.13s/it][OK] CUBE: prompt prepared in 51.1s
+LLM候选初值生成:  30%|███       | 63/208 [42:29<2:04:58, 51.71s/it][OK] VIBRBEAM: prompt prepared in 55.4s
+LLM候选初值生成:  31%|███       | 64/208 [43:42<2:19:54, 58.29s/it][OK] ZY2: prompt prepared in 36.3s
+LLM候选初值生成:  31%|███▏      | 65/208 [43:53<1:45:13, 44.15s/it][OK] HIMMELBE: prompt prepared in 11.1s
+LLM候选初值生成:  32%|███▏      | 66/208 [44:04<1:20:34, 34.05s/it][OK] S365: prompt prepared in 10.5s
+LLM候选初值生成:  32%|███▏      | 67/208 [44:14<1:03:13, 26.90s/it][OK] PORTFL6: prompt prepared in 10.2s
+LLM候选初值生成:  33%|███▎      | 68/208 [44:24<51:11, 21.94s/it]  [OK] HEART6LS: prompt prepared in 10.4s
+LLM候选初值生成:  33%|███▎      | 69/208 [44:34<42:11, 18.22s/it][OK] BT5: prompt prepared in 9.5s
+LLM候选初值生成:  34%|███▎      | 70/208 [44:45<37:00, 16.09s/it][OK] HS73: prompt prepared in 11.1s
+LLM候选初值生成:  34%|███▍      | 71/208 [44:56<33:22, 14.62s/it][OK] HIMMELP3: prompt prepared in 11.2s
+LLM候选初值生成:  35%|███▍      | 72/208 [45:52<1:01:10, 26.99s/it][OK] PFIT2: prompt prepared in 55.9s
+LLM候选初值生成:  35%|███▌      | 73/208 [46:50<1:21:19, 36.14s/it][OK] BT12: prompt prepared in 57.5s
+LLM候选初值生成:  36%|███▌      | 74/208 [47:41<1:31:03, 40.77s/it][OK] HAIFAM: prompt prepared in 51.6s
+LLM候选初值生成:  36%|███▌      | 75/208 [48:27<1:33:41, 42.27s/it][OK] FCCU: prompt prepared in 45.8s
+LLM候选初值生成:  37%|███▋      | 76/208 [49:11<1:34:19, 42.87s/it][OK] PALMER3A: prompt prepared in 44.3s
+LLM候选初值生成:  37%|███▋      | 77/208 [50:03<1:39:39, 45.65s/it][OK] HS69: prompt prepared in 52.1s
+LLM候选初值生成:  38%|███▊      | 78/208 [50:55<1:42:39, 47.38s/it][OK] DEMBO7: prompt prepared in 51.4s
+LLM候选初值生成:  38%|███▊      | 79/208 [51:48<1:45:54, 49.26s/it][OK] TRUSPYR2: prompt prepared in 53.6s
+LLM候选初值生成:  38%|███▊      | 80/208 [52:30<1:39:56, 46.85s/it][OK] LEAKNET: prompt prepared in 41.2s
+LLM候选初值生成:  39%|███▉      | 81/208 [53:18<1:40:23, 47.43s/it][OK] BROWNBS: prompt prepared in 48.8s
+LLM候选初值生成:  39%|███▉      | 82/208 [54:07<1:40:12, 47.72s/it][OK] HEART8LS: prompt prepared in 48.4s
+LLM候选初值生成:  40%|███▉      | 83/208 [54:58<1:41:31, 48.73s/it][OK] PALMER3: prompt prepared in 51.1s
+LLM候选初值生成:  40%|████      | 84/208 [55:50<1:42:27, 49.58s/it][OK] MAKELA2: prompt prepared in 51.6s
+LLM候选初值生成:  41%|████      | 85/208 [56:39<1:41:22, 49.45s/it][OK] HS23: prompt prepared in 49.1s
+LLM候选初值生成:  41%|████▏     | 86/208 [57:29<1:41:11, 49.76s/it][OK] HS79: prompt prepared in 50.5s
+LLM候选初值生成:  42%|████▏     | 87/208 [58:17<1:39:12, 49.19s/it][OK] ZAMB2-10: prompt prepared in 47.9s
+LLM候选初值生成:  42%|████▏     | 88/208 [59:03<1:36:31, 48.26s/it][OK] READING6: prompt prepared in 46.1s
+LLM候选初值生成:  43%|████▎     | 89/208 [59:48<1:33:58, 47.38s/it][OK] DECONVB: prompt prepared in 45.3s
+LLM候选初值生成:  43%|████▎     | 90/208 [1:00:11<1:18:40, 40.01s/it][OK] MARATOS: prompt prepared in 22.8s
+LLM候选初值生成:  44%|████▍     | 91/208 [1:00:41<1:12:11, 37.02s/it][OK] S365MOD: prompt prepared in 30.1s
+LLM候选初值生成:  44%|████▍     | 92/208 [1:01:29<1:18:02, 40.37s/it][OK] OSBORNEA: prompt prepared in 48.2s
+LLM候选初值生成:  45%|████▍     | 93/208 [1:02:16<1:21:11, 42.36s/it][OK] HS46: prompt prepared in 47.0s
+LLM候选初值生成:  45%|████▌     | 94/208 [1:03:03<1:22:42, 43.53s/it][OK] HS18: prompt prepared in 46.3s
+LLM候选初值生成:  46%|████▌     | 95/208 [1:03:44<1:20:28, 42.73s/it][OK] LOOTSMA: prompt prepared in 40.9s
+LLM候选初值生成:  46%|████▌     | 96/208 [1:04:14<1:13:00, 39.11s/it][OK] HS84: prompt prepared in 30.7s
+LLM候选初值生成:  47%|████▋     | 97/208 [1:04:58<1:14:58, 40.53s/it][OK] PALMER8A: prompt prepared in 43.8s
+LLM候选初值生成:  47%|████▋     | 98/208 [1:05:43<1:16:56, 41.97s/it][OK] HYPCIR: prompt prepared in 45.3s
+LLM候选初值生成:  48%|████▊     | 99/208 [1:06:29<1:18:01, 42.95s/it][OK] HS40: prompt prepared in 45.2s
+LLM候选初值生成:  48%|████▊     | 100/208 [1:07:14<1:18:24, 43.56s/it][OK] RSNBRNE: prompt prepared in 45.0s
+LLM候选初值生成:  49%|████▊     | 101/208 [1:08:00<1:19:10, 44.40s/it][OK] TRO4X4: prompt prepared in 46.4s
+LLM候选初值生成:  49%|████▉     | 102/208 [1:08:40<1:16:03, 43.05s/it][OK] CSFI2: prompt prepared in 39.9s
+LLM候选初值生成:  50%|████▉     | 103/208 [1:09:22<1:14:54, 42.80s/it][OK] HS10: prompt prepared in 42.2s
+LLM候选初值生成:  50%|█████     | 104/208 [1:10:09<1:16:03, 43.88s/it][OK] BT3: prompt prepared in 46.4s
+LLM候选初值生成:  50%|█████     | 105/208 [1:10:52<1:15:00, 43.69s/it][OK] DISC2: prompt prepared in 43.3s
+LLM候选初值生成:  51%|█████     | 106/208 [1:11:35<1:14:07, 43.60s/it][OK] POWELLSQ: prompt prepared in 43.4s
+LLM候选初值生成:  51%|█████▏    | 107/208 [1:12:14<1:10:43, 42.02s/it][OK] HS64: prompt prepared in 38.3s
+LLM候选初值生成:  52%|█████▏    | 108/208 [1:12:57<1:10:50, 42.51s/it][OK] TENBARS3: prompt prepared in 43.6s
+LLM候选初值生成:  52%|█████▏    | 109/208 [1:13:39<1:09:47, 42.29s/it][OK] MIFFLIN2: prompt prepared in 41.8s
+LLM候选初值生成:  53%|█████▎    | 110/208 [1:14:23<1:09:57, 42.84s/it][OK] BATCH: prompt prepared in 44.1s
+LLM候选初值生成:  53%|█████▎    | 111/208 [1:15:08<1:10:14, 43.45s/it][OK] HS25: prompt prepared in 44.9s
+LLM候选初值生成:  54%|█████▍    | 112/208 [1:15:52<1:09:39, 43.54s/it][OK] HS83: prompt prepared in 43.7s
+LLM候选初值生成:  54%|█████▍    | 113/208 [1:16:29<1:06:05, 41.74s/it][OK] GROUPING: prompt prepared in 37.5s
+LLM候选初值生成:  55%|█████▍    | 114/208 [1:17:12<1:06:01, 42.14s/it][OK] HS72: prompt prepared in 43.1s
+LLM候选初值生成:  55%|█████▌    | 115/208 [1:17:56<1:06:01, 42.60s/it][OK] MESH: prompt prepared in 43.7s
+LLM候选初值生成:  56%|█████▌    | 116/208 [1:18:37<1:04:42, 42.20s/it][OK] HATFLDF: prompt prepared in 41.3s
+LLM候选初值生成:  56%|█████▋    | 117/208 [1:19:21<1:04:47, 42.72s/it][OK] GIGOMEZ2: prompt prepared in 43.9s
+LLM候选初值生成:  57%|█████▋    | 118/208 [1:20:05<1:04:28, 42.98s/it][OK] MADSEN: prompt prepared in 43.6s
+LLM候选初值生成:  57%|█████▋    | 119/208 [1:20:48<1:03:41, 42.93s/it][OK] PFIT4LS: prompt prepared in 42.8s
+LLM候选初值生成:  58%|█████▊    | 120/208 [1:21:32<1:03:49, 43.52s/it][OK] ZECEVIC3: prompt prepared in 44.9s
+LLM候选初值生成:  58%|█████▊    | 121/208 [1:22:18<1:03:46, 43.99s/it][OK] ZECEVIC4: prompt prepared in 45.1s
+LLM候选初值生成:  59%|█████▊    | 122/208 [1:23:02<1:03:13, 44.11s/it][OK] HS75: prompt prepared in 44.4s
+LLM候选初值生成:  59%|█████▉    | 123/208 [1:23:47<1:03:02, 44.50s/it][OK] HS12: prompt prepared in 45.4s
+LLM候选初值生成:  60%|█████▉    | 124/208 [1:24:29<1:00:59, 43.56s/it][OK] EXPFIT: prompt prepared in 41.4s
+LLM候选初值生成:  60%|██████    | 125/208 [1:25:12<1:00:16, 43.57s/it][OK] PALMER4: prompt prepared in 43.6s
+LLM候选初值生成:  61%|██████    | 126/208 [1:25:59<1:00:58, 44.62s/it][OK] BT7: prompt prepared in 47.1s
+LLM候选初值生成:  61%|██████    | 127/208 [1:26:44<1:00:17, 44.66s/it][OK] HS30: prompt prepared in 44.7s
+LLM候选初值生成:  62%|██████▏   | 128/208 [1:27:24<57:43, 43.29s/it]  [OK] HS20: prompt prepared in 40.1s
+LLM候选初值生成:  62%|██████▏   | 129/208 [1:28:06<56:18, 42.77s/it][OK] PALMER6A: prompt prepared in 41.6s
+LLM候选初值生成:  62%|██████▎   | 130/208 [1:28:47<55:09, 42.42s/it][OK] MWRIGHT: prompt prepared in 41.6s
+LLM候选初值生成:  63%|██████▎   | 131/208 [1:29:32<55:22, 43.15s/it][OK] TENBARS4: prompt prepared in 44.8s
+LLM候选初值生成:  63%|██████▎   | 132/208 [1:30:17<55:17, 43.66s/it][OK] HS65: prompt prepared in 44.8s
+LLM候选初值生成:  64%|██████▍   | 133/208 [1:31:01<54:28, 43.59s/it][OK] BT4: prompt prepared in 43.4s
+LLM候选初值生成:  64%|██████▍   | 134/208 [1:31:46<54:24, 44.11s/it][OK] PALMER5C: prompt prepared in 45.3s
+LLM候选初值生成:  65%|██████▍   | 135/208 [1:32:26<52:23, 43.06s/it][OK] ARGAUSS: prompt prepared in 40.6s
+LLM候选初值生成:  65%|██████▌   | 136/208 [1:33:09<51:33, 42.96s/it][OK] PSPDOC: prompt prepared in 42.7s
+LLM候选初值生成:  66%|██████▌   | 137/208 [1:33:56<52:14, 44.14s/it][OK] ALSOTAME: prompt prepared in 46.9s
+LLM候选初值生成:  66%|██████▋   | 138/208 [1:34:42<52:13, 44.76s/it][OK] TRO5X5: prompt prepared in 46.2s
+LLM候选初值生成:  67%|██████▋   | 139/208 [1:35:27<51:36, 44.87s/it][OK] HALDMADS: prompt prepared in 45.1s
+LLM候选初值生成:  67%|██████▋   | 140/208 [1:36:12<50:39, 44.70s/it][OK] TENBARS1: prompt prepared in 44.3s
+LLM候选初值生成:  68%|██████▊   | 141/208 [1:36:43<45:23, 40.64s/it][OK] BT11: prompt prepared in 31.2s
+LLM候选初值生成:  68%|██████▊   | 142/208 [1:37:29<46:40, 42.43s/it][OK] PALMER5D: prompt prepared in 46.6s
+LLM候选初值生成:  69%|██████▉   | 143/208 [1:38:16<47:10, 43.55s/it][OK] HS6: prompt prepared in 46.2s
+LLM候选初值生成:  69%|██████▉   | 144/208 [1:39:00<46:35, 43.68s/it][OK] HATFLDG: prompt prepared in 44.0s
+LLM候选初值生成:  70%|██████▉   | 145/208 [1:39:43<45:53, 43.71s/it][OK] HS108: prompt prepared in 43.8s
+LLM候选初值生成:  70%|███████   | 146/208 [1:40:27<45:02, 43.58s/it][OK] ANTWERP: prompt prepared in 43.3s
+LLM候选初值生成:  71%|███████   | 147/208 [1:41:08<43:37, 42.92s/it][OK] BEALE: prompt prepared in 41.4s
+LLM候选初值生成:  71%|███████   | 148/208 [1:41:50<42:34, 42.58s/it][OK] HS95: prompt prepared in 41.8s
+LLM候选初值生成:  72%|███████▏  | 149/208 [1:42:31<41:35, 42.29s/it][OK] CB3: prompt prepared in 41.6s
+LLM候选初值生成:  72%|███████▏  | 150/208 [1:43:13<40:39, 42.05s/it][OK] HS57: prompt prepared in 41.5s
+LLM候选初值生成:  73%|███████▎  | 151/208 [1:43:53<39:24, 41.47s/it][OK] BT13: prompt prepared in 40.1s
+LLM候选初值生成:  73%|███████▎  | 152/208 [1:44:35<38:43, 41.50s/it][OK] HIMMELP2: prompt prepared in 41.5s
+LLM候选初值生成:  74%|███████▎  | 153/208 [1:45:20<39:12, 42.77s/it][OK] PFIT3: prompt prepared in 45.8s
+LLM候选初值生成:  74%|███████▍  | 154/208 [1:46:05<38:58, 43.30s/it][OK] HS109: prompt prepared in 44.5s
+LLM候选初值生成:  75%|███████▍  | 155/208 [1:46:47<37:48, 42.81s/it][OK] DENSCHNC: prompt prepared in 41.7s
+LLM候选初值生成:  75%|███████▌  | 156/208 [1:47:33<38:00, 43.85s/it][OK] POLAK1: prompt prepared in 46.3s
+LLM候选初值生成:  75%|███████▌  | 157/208 [1:48:14<36:28, 42.90s/it][OK] PORTFL4: prompt prepared in 40.7s
+LLM候选初值生成:  76%|███████▌  | 158/208 [1:48:55<35:17, 42.35s/it][OK] METHANL8: prompt prepared in 41.0s
+LLM候选初值生成:  76%|███████▋  | 159/208 [1:49:40<35:18, 43.23s/it][OK] TRIGGER: prompt prepared in 45.3s
+LLM候选初值生成:  77%|███████▋  | 160/208 [1:50:24<34:46, 43.48s/it][OK] BT9: prompt prepared in 44.0s
+LLM候选初值生成:  77%|███████▋  | 161/208 [1:51:05<33:22, 42.61s/it][OK] HS13: prompt prepared in 40.6s
+LLM候选初值生成:  78%|███████▊  | 162/208 [1:51:48<32:51, 42.87s/it][OK] CHACONN2: prompt prepared in 43.5s
+LLM候选初值生成:  78%|███████▊  | 163/208 [1:52:30<31:55, 42.56s/it][OK] PALMER6E: prompt prepared in 41.8s
+LLM候选初值生成:  79%|███████▉  | 164/208 [1:53:12<31:03, 42.34s/it][OK] DENSCHNF: prompt prepared in 41.8s
+LLM候选初值生成:  79%|███████▉  | 165/208 [1:53:57<30:54, 43.12s/it][OK] ACOPP14: prompt prepared in 44.9s
+LLM候选初值生成:  80%|███████▉  | 166/208 [1:54:40<30:11, 43.12s/it][OK] TRIMLOSS: prompt prepared in 43.1s
+LLM候选初值生成:  80%|████████  | 167/208 [1:55:24<29:47, 43.59s/it][OK] GOTTFR: prompt prepared in 44.7s
+LLM候选初值生成:  81%|████████  | 168/208 [1:56:09<29:10, 43.76s/it][OK] HS68: prompt prepared in 44.2s
+LLM候选初值生成:  81%|████████▏ | 169/208 [1:56:53<28:29, 43.85s/it][OK] BT6: prompt prepared in 44.0s
+LLM候选初值生成:  82%|████████▏ | 170/208 [1:57:36<27:43, 43.77s/it][OK] PFIT3LS: prompt prepared in 43.6s
+LLM候选初值生成:  82%|████████▏ | 171/208 [1:58:22<27:22, 44.38s/it][OK] HS100LNP: prompt prepared in 45.8s
+LLM候选初值生成:  83%|████████▎ | 172/208 [1:59:06<26:31, 44.20s/it][OK] PALMER4E: prompt prepared in 43.8s
+LLM候选初值生成:  83%|████████▎ | 173/208 [1:59:51<26:02, 44.64s/it][OK] HS31: prompt prepared in 45.7s
+LLM候选初值生成:  84%|████████▎ | 174/208 [2:00:35<25:04, 44.26s/it][OK] S316-322: prompt prepared in 43.4s
+LLM候选初值生成:  84%|████████▍ | 175/208 [2:01:20<24:25, 44.41s/it][OK] SINEVAL: prompt prepared in 44.8s
+LLM候选初值生成:  85%|████████▍ | 176/208 [2:02:05<23:54, 44.84s/it][OK] ZAMB2-11: prompt prepared in 45.8s
+LLM候选初值生成:  85%|████████▌ | 177/208 [2:02:54<23:40, 45.82s/it][OK] HIMMELP4: prompt prepared in 48.1s
+LLM候选初值生成:  86%|████████▌ | 178/208 [2:03:37<22:31, 45.05s/it][OK] SSEBNLN: prompt prepared in 43.3s
+LLM候选初值生成:  86%|████████▌ | 179/208 [2:04:15<20:48, 43.07s/it][OK] HS47: prompt prepared in 38.4s
+[SKIP] KOWOSB: in CUTEst crash blacklist
+LLM候选初值生成:  87%|████████▋ | 181/208 [2:05:00<15:03, 33.47s/it][OK] MISTAKE: prompt prepared in 44.6s
+LLM候选初值生成:  88%|████████▊ | 182/208 [2:05:45<15:44, 36.34s/it][OK] HS22: prompt prepared in 45.0s
+LLM候选初值生成:  88%|████████▊ | 183/208 [2:06:30<16:04, 38.59s/it][OK] POLAK4: prompt prepared in 45.0s
+LLM候选初值生成:  88%|████████▊ | 184/208 [2:07:16<16:13, 40.56s/it][OK] MSS1: prompt prepared in 45.8s
+LLM候选初值生成:  89%|████████▉ | 185/208 [2:08:01<16:01, 41.82s/it][OK] HS113: prompt prepared in 45.1s
+LLM候选初值生成:  89%|████████▉ | 186/208 [2:08:40<15:06, 41.19s/it][OK] HS77: prompt prepared in 39.6s
+LLM候选初值生成:  90%|████████▉ | 187/208 [2:09:26<14:53, 42.53s/it][OK] POWELLBS: prompt prepared in 45.8s
+LLM候选初值生成:  90%|█████████ | 188/208 [2:10:06<13:54, 41.71s/it][OK] PALMER7E: prompt prepared in 39.7s
+LLM候选初值生成:  91%|█████████ | 189/208 [2:10:47<13:11, 41.64s/it][OK] LAUNCH: prompt prepared in 41.5s
+LLM候选初值生成:  91%|█████████▏| 190/208 [2:11:31<12:37, 42.10s/it][OK] HS59: prompt prepared in 43.2s
+LLM候选初值生成:  92%|█████████▏| 191/208 [2:12:09<11:35, 40.93s/it][OK] S308: prompt prepared in 38.2s
+LLM候选初值生成:  92%|█████████▏| 192/208 [2:12:50<10:57, 41.08s/it][OK] HEART8: prompt prepared in 41.4s
+LLM候选初值生成:  93%|█████████▎| 193/208 [2:13:33<10:25, 41.69s/it][OK] CRESC100: prompt prepared in 43.1s
+LLM候选初值生成:  93%|█████████▎| 194/208 [2:14:15<09:45, 41.80s/it][OK] PFIT2LS: prompt prepared in 42.1s
+LLM候选初值生成:  94%|█████████▍| 195/208 [2:14:59<09:10, 42.33s/it][OK] HS8: prompt prepared in 43.6s
+LLM候选初值生成:  94%|█████████▍| 196/208 [2:15:44<08:39, 43.26s/it][OK] HS103: prompt prepared in 45.4s
+LLM候选初值生成:  95%|█████████▍| 197/208 [2:16:23<07:41, 41.93s/it][OK] BT8: prompt prepared in 38.8s
+LLM候选初值生成:  95%|█████████▌| 198/208 [2:17:08<07:08, 42.80s/it][OK] PALMER6C: prompt prepared in 44.8s
+LLM候选初值生成:  96%|█████████▌| 199/208 [2:17:53<06:30, 43.38s/it][OK] DECONVC: prompt prepared in 44.7s
+LLM候选初值生成:  96%|█████████▌| 200/208 [2:18:36<05:47, 43.39s/it][OK] PRODPL0: prompt prepared in 43.4s
+LLM候选初值生成:  97%|█████████▋| 201/208 [2:19:22<05:09, 44.20s/it][OK] TRO3X3: prompt prepared in 46.1s
+LLM候选初值生成:  97%|█████████▋| 202/208 [2:20:06<04:24, 44.04s/it][OK] WEEDS: prompt prepared in 43.7s
+LLM候选初值生成:  98%|█████████▊| 203/208 [2:20:48<03:37, 43.53s/it][OK] PALMER8E: prompt prepared in 42.3s
+LLM候选初值生成:  98%|█████████▊| 204/208 [2:21:32<02:55, 43.76s/it][OK] PALMER2A: prompt prepared in 44.3s
+LLM候选初值生成:  99%|█████████▊| 205/208 [2:22:19<02:13, 44.55s/it][OK] BLEACHNG: prompt prepared in 46.4s
+LLM候选初值生成:  99%|█████████▉| 206/208 [2:23:04<01:29, 44.63s/it][OK] CUBENE: prompt prepared in 44.8s
+LLM候选初值生成: 100%|█████████▉| 207/208 [2:23:50<00:45, 45.00s/it][OK] DENSCHNB: prompt prepared in 45.9s
+LLM候选初值生成: 100%|██████████| 208/208 [2:24:33<00:00, 44.45s/it]LLM候选初值生成: 100%|██████████| 208/208 [2:24:33<00:00, 41.70s/it]
+[OK] HS101: prompt prepared in 43.2s
+[DONE] prepared=206, generated=0, skipped=2, failed=0

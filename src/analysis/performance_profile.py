@@ -13,19 +13,28 @@ def performance_profile(summary: pd.DataFrame, metric: str = "best_nfev",
     sources: init_source 列表，如 ['cutest','random','llm']
     """
     if sources is None:
-        sources = ["cutest", "random", "llm"]
+        sources = ["cutest", "random_raw", "random_post", "random", "llm_raw", "llm_post", "llm"]
     if ax is None:
         _, ax = plt.subplots(figsize=(7, 5))
 
     # pivot: rows=problem, cols=source
     pivot = summary.pivot_table(index="problem", columns="init_source",
                                 values=metric, aggfunc="first")
-    pivot = pivot[sources].dropna()
+    available = [s for s in sources if s in pivot.columns]
+    if not available:
+        ax.text(0.5, 0.5, "No available sources", ha="center", va="center", transform=ax.transAxes)
+        ax.set_axis_off()
+        return ax
+    pivot = pivot[available].dropna()
+    if pivot.empty:
+        ax.text(0.5, 0.5, "No comparable solved samples", ha="center", va="center", transform=ax.transAxes)
+        ax.set_axis_off()
+        return ax
 
     best = pivot.min(axis=1)            # 每题最佳solver的值
     taus = np.logspace(0, np.log10(tau_max), 500)
 
-    for src in sources:
+    for src in available:
         ratios = (pivot[src] / best).values
         rho = [(ratios <= t).mean() for t in taus]
         ax.semilogx(taus, rho, label=src, linewidth=1.8)

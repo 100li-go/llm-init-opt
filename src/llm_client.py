@@ -1,89 +1,106 @@
 """
 职责：
-  1. 构造 Prompt（含元信息 + 策略格式要求）
+  1. 构造 Prompt（支持按 route_key 路由模板）
   2. 调用 DeepSeek API，带重试
-  3. 解析 JSON 响应，返回原始策略列表
-  （校验交给 strategy_validator.py）
+  3. 解析 JSON 响应，返回单个候选 x 输出对象
 
 关键接口：
-  generate_strategies(meta: dict, cfg: Config) -> list[dict]
+  generate_candidate(payload, cfg, prompt_spec=None, request_timeout_sec=None, max_retries_override=None) -> dict
 """
 import json
 import os
 import time
-import re
-import openai   # DeepSeek 兼容 OpenAI SDK
+from json import JSONDecoder
+from typing import Optional
+
+import openai  # DeepSeek 兼容 OpenAI SDK
+
 from src.config import Config
+from src.prompt_router import PromptSpec, select_prompt
 
-_SYSTEM_PROMPT = """
-You are an expert in numerical optimization.
-Given a description of a CUTEst benchmark problem, your task is to suggest
-initialization strategies for gradient-based local optimizers (BFGS / L-BFGS-B).
-Each strategy is a small JSON object. Output ONLY a JSON array of exactly {K} strategies.
-No explanation, no markdown fences—just the raw JSON array.
 
-Each strategy object MUST have exactly these fields:
-  "mode":     one of ["near_x0", "center_of_bounds", "interior_from_bounds"]
-  "alpha":    float in [{alpha_min}, {alpha_max}], perturbation strength
-  "sparsity": one of {sparsity_choices}, fraction of dims to perturb
-  "seed":     integer, for reproducibility
+def _extract_candidate_json(text: str, multi_output: bool = False, multi_k: int = 5) -> dict:
+    """从模型输出中稳健抽取候选向量，兼容数组/对象与多候选模式。"""
+    def _normalize(parsed):
+        if isinstance(parsed, dict):
+            if "xs" in parsed and isinstance(parsed["xs"], list):
+                xs = parsed["xs"][: int(multi_k)]
+                return {"xs": xs}
+            if "x_list" in parsed and isinstance(parsed["x_list"], list):
+                xs = parsed["x_list"][: int(multi_k)]
+                return {"xs": xs}
+            if "x" in parsed:
+                return {"xs": [parsed["x"]]} if multi_output else {"x": parsed["x"]}
+            return None
 
-Rules:
-- "center_of_bounds" and "interior_from_bounds" are only meaningful when has_bounds=true.
-  If has_bounds=false, use "near_x0" instead.
-- Aim for diversity: vary mode, alpha, and sparsity across strategies.
-- Alpha close to 0.05 means gentle perturbation; 1.0 means explore widely.
-""".strip()
+        if isinstance(parsed, list):
+            # multi-output array-of-arrays
+            if len(parsed) > 0 and all(isinstance(it, list) for it in parsed):
+                xs = parsed[: int(multi_k)]
+                return {"xs": xs}
+            # single vector array
+            return {"xs": [parsed]} if multi_output else {"x": parsed}
+        return None
 
-def _build_user_prompt(meta: dict, cfg: Config) -> tuple:
-    init_cfg = cfg.init
-    system_filled = _SYSTEM_PROMPT.format(
-        K=cfg.llm["K_strategies"],
-        alpha_min=init_cfg["alpha_min"],
-        alpha_max=init_cfg["alpha_max"],
-        sparsity_choices=init_cfg["sparsity_choices"],
-    )
-    meta_str = json.dumps(meta, indent=2, ensure_ascii=False)
-    user = (
-        f"Problem metadata:\n{meta_str}\n\n"
-        f"Generate {cfg.llm['K_strategies']} initialization strategies."
-    )
-    return system_filled, user
-
-def _extract_json_array(text: str) -> list:
-    """从模型输出中稳健地抽取第一个 JSON 数组"""
-    # 先尝试直接解析
     try:
-        return json.loads(text)
+        parsed = json.loads(text)
+        norm = _normalize(parsed)
+        if norm is not None:
+            return norm
     except Exception:
         pass
-    # 找第一个 [...] 块
-    match = re.search(r'\[.*?\]', text, re.DOTALL)
-    if match:
-        return json.loads(match.group())
-    raise ValueError(f"No JSON array found in LLM output: {text[:300]}")
 
-def generate_strategies(meta: dict, cfg: Config) -> list:
-    system_prompt, user_prompt = _build_user_prompt(meta, cfg)
+    decoder = JSONDecoder()
+    for start in (i for i, ch in enumerate(text) if ch in "{["):
+        try:
+            obj, _ = decoder.raw_decode(text[start:])
+            norm = _normalize(obj)
+            if norm is not None:
+                return norm
+        except Exception:
+            continue
+    raise ValueError(f"No JSON array/object candidate found in LLM output: {text[:300]}")
+
+
+def generate_candidate(
+    payload: dict,
+    cfg: Config,
+    prompt_spec: Optional[PromptSpec] = None,
+    request_timeout_sec: Optional[int] = None,
+    max_retries_override: Optional[int] = None,
+    multi_output: bool = False,
+    multi_k: int = 5,
+) -> dict:
+    spec = prompt_spec or select_prompt(payload, cfg, multi_output=multi_output, multi_k=multi_k)
+    timeout_sec = float(request_timeout_sec or cfg.llm.get("request_timeout_sec", 60))
+    max_retries = int(max_retries_override or cfg.llm["max_retries"])
+
     client = openai.OpenAI(
         api_key=cfg.llm.get("api_key") or os.environ.get("OPENAI_API_KEY"),
         base_url="https://api.deepseek.com/v1",
+        timeout=timeout_sec,
+        max_retries=0,
     )
-    for attempt in range(cfg.llm["max_retries"]):
+    for attempt in range(max_retries):
         try:
             resp = client.chat.completions.create(
                 model=cfg.llm["model"],
                 temperature=cfg.llm["temperature"],
                 max_tokens=cfg.llm["max_tokens"],
                 messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user",   "content": user_prompt},
+                    {"role": "system", "content": spec.system_prompt},
+                    {"role": "user", "content": spec.user_prompt},
                 ],
             )
-            raw = resp.choices[0].message.content.strip()
-            return _extract_json_array(raw)
+            raw = (resp.choices[0].message.content or "").strip()
+            out = _extract_candidate_json(raw, multi_output=multi_output, multi_k=multi_k)
+            out["raw_text"] = raw
+            out["model"] = cfg.llm["model"]
+            return out
         except Exception as e:
-            if attempt < cfg.llm["max_retries"] - 1:
+            if attempt < max_retries - 1:
                 time.sleep(cfg.llm["retry_delay_sec"] * (attempt + 1))
             else:
-                raise RuntimeError(f"LLM call failed after {cfg.llm['max_retries']} retries: {e}")
+                raise RuntimeError(
+                    f"LLM call failed after {max_retries} retries: {type(e).__name__}: {e}"
+                )

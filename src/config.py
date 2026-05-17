@@ -5,8 +5,26 @@
 import os
 import yaml
 from pathlib import Path
-from dataclasses import dataclass, field
-from typing import List
+from dataclasses import dataclass
+
+
+def _load_dotenv(path: str = ".env") -> None:
+    """Load simple KEY=VALUE pairs from .env into os.environ if missing."""
+    env_path = Path(path)
+    if not env_path.exists():
+        return
+    for raw in env_path.read_text(encoding="utf-8").splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+        if key and key not in os.environ:
+            os.environ[key] = value
+
+
+_load_dotenv()
 
 @dataclass
 class Config:
@@ -28,8 +46,12 @@ class Config:
         return self.init["K"]
 
     @property
-    def strategies_dir(self) -> Path:
-        return Path(self.paths["strategies_dir"])
+    def llm_candidates_dir(self) -> Path:
+        return Path(self.paths["llm_candidates_dir"])
+
+    @property
+    def llm_prompts_dir(self) -> Path:
+        return Path(self.paths["llm_prompts_dir"])
 
     @property
     def results_dir(self) -> Path:

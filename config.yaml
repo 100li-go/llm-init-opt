@@ -1,8 +1,8 @@
 # ── 问题筛选 ──────────────────────────────────────────
 problem_selection:
-  n_max: 200          # 变量维度上限
-  m_max: 0            # 只取无一般约束
-  n_sample: 300       # 最终抽样数量
+  n_max: 300          # 变量维度上限
+  m_max: 200
+  n_sample: 300      # 达到该数量后立即停止筛选并直接作为样本
   seed: 42            # 抽样随机种子
 
 # ── 初值生成 ──────────────────────────────────────────
@@ -10,9 +10,6 @@ init:
   K: 10               # 每个 source 的初值数量
   alpha_default: 1.0  # 扰动强度默认值
   alpha_retry: 0.2    # 回退重试时的扰动强度
-  alpha_min: 0.05     # LLM策略alpha下限（校验用）
-  alpha_max: 1.0      # LLM策略alpha上限（校验用）
-  sparsity_choices: [0.05, 0.2, 1.0]  # 离散sparsity集合
   random_seed_base: 1000  # random baseline种子基址
 
 # ── 求解器 ─────────────────────────────────────────────
@@ -25,6 +22,22 @@ solver:
     method: L-BFGS-B
     maxiter: 500
     ftol: 1.0e-12
+  policy:
+    route_exact:
+      "NLC:LS": ["IPOPT", "SQP"]
+      "NLC:SmoothNLP": ["IPOPT", "SQP"]
+      "LEB:LS": ["SQP", "IPOPT"]
+      "LEB:SmoothNLP": ["SQP", "IPOPT"]
+      "LCB:LS": ["IPOPT", "SQP"]
+      "LCB:SmoothNLP": ["IPOPT", "SQP"]
+      "U:LS": ["L-BFGS-B"]
+      "B:LS": ["L-BFGS-B"]
+      "U:SmoothNLP": ["L-BFGS-B"]
+      "B:SmoothNLP": ["L-BFGS-B"]
+    route_constraint:
+      NLC: ["IPOPT", "SQP"]
+      LEB: ["SQP", "IPOPT"]
+      LCB: ["IPOPT", "SQP"]
   timeout_sec: 120      # 单次run超时保护
 
 # ── LLM ────────────────────────────────────────────────
@@ -32,13 +45,35 @@ llm:
   model: deepseek-chat
   temperature: 0.2
   max_tokens: 2048
+  request_timeout_sec: 60
   max_retries: 3
   retry_delay_sec: 5
-  K_strategies: 10      # 要求返回策略数
+  problem_timeout_sec: 180
+  problem_retry: 2
+  api_key: ""
+  cutest_crash_blacklist: ["PALMER4B", "HOLMES", "KOWOSB"]
+  # v2 统计口径：失败惩罚上限（problem-arm capped cost）
+  time_cap_sec: 60
+  nfev_cap: 1000000
+  # payload 两档（full/prefix）
+  payload_full_n_max: 120
+  payload_full_m_max: 80
+  payload_head_k: 50
+  payload_full_constraint_m_max: 120
+  # Jacobian 稀疏化配置
+  jacobian_topk: 16
+  jacobian_row_nnz_cap: 30
+  jacobian_abs_tol: 1.0e-12
+  inf_bound_threshold: 1.0e20
+  multi_output:
+    enabled: true
+    k: 5
+    output_suffix: "_llmK5"
 
 # ── 路径 ───────────────────────────────────────────────
 paths:
   problem_set: problem_set.json
-  strategies_dir: llm_strategies/
+  llm_prompts_dir: llm_prompts/
+  llm_candidates_dir: llm_candidates/
   results_dir: results/
   figures_dir: figures/

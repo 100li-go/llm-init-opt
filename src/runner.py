@@ -1,53 +1,42 @@
-"""
-职责：
-  对 problem_set.json 中每道题：
-    1. 加载 pycutest 问题
-    2. 生成三组初值（cutest / random / llm）
-    3. 调用 solver，收集所有 RunRecord
-    4. 拼成 DataFrame 行，累积写入 runs.parquet
-  支持断点续跑（已跑过的 problem 跳过）。
-
-关键接口：
-  run_all(problem_set, cfg, strategies_dir, out_path)
-"""
+"""批量求解，写入 runs.parquet，每题用子进程强制超时"""
 import json
+import multiprocessing as mp
+
 import pandas as pd
 import pycutest
-from pathlib import Path
 from tqdm import tqdm
 
-from src.config import Config
-from src.problem_selector import ProblemMeta
 from src.initializer import Initializer
+from src.llm_output_validator import validate_candidate, validate_candidate_multi
 from src.solver import solve
-from src.strategy_validator import validate_and_fix
 
-def _load_strategies(problem_name: str, strategies_dir: Path,
-                     cfg: Config, has_bounds: bool) -> list:
-    path = strategies_dir / f"{problem_name}.json"
+PROBLEM_TIMEOUT = 60
+
+
+def _load_llm_candidate(problem_name, candidates_dir):
+    path = candidates_dir / f"{problem_name}.json"
     if not path.exists():
-        return []
+        return None
     with open(path) as f:
         raw = json.load(f)
-    return validate_and_fix(raw, cfg, has_bounds)
+    return raw if isinstance(raw, dict) else None
 
-def _build_row(meta: ProblemMeta, init_source: str, init_id: int,
-               init_res, solve_rec) -> dict:
+
+def _build_row(meta, init_source, init_id, init_res, solve_rec):
     return {
-        # 元信息
         "problem": meta.name,
         "n": meta.n,
-        "category": meta.category,
         "has_bounds": meta.has_bounds,
-        # 初值
+        "constraint_tag": meta.constraint_tag,
+        "objective_tag": meta.objective_tag,
+        "route_key": meta.route_key,
         "init_source": init_source,
         "init_id": init_id,
         "f0": init_res.f0,
-        "x0_norm": float((init_res.x0**2).sum()**0.5),
+        "x0_norm": float((init_res.x0**2).sum() ** 0.5),
         "is_f0_finite": init_res.is_f0_finite,
         "fallback": init_res.fallback,
         "fallback_reason": init_res.fallback_reason,
-        # 求解结果
         "success": solve_rec.success,
         "status": solve_rec.status,
         "message": solve_rec.message,
@@ -58,54 +47,121 @@ def _build_row(meta: ProblemMeta, init_source: str, init_id: int,
         "is_f_final_finite": solve_rec.is_f_final_finite,
         "time_sec": solve_rec.time_sec,
         "exception_type": solve_rec.exception_type,
+        "solver_method": solve_rec.solver_method,
+        "solver_chain": solve_rec.solver_chain,
+        "primary_solver": solve_rec.primary_solver,
+        "primary_hit": solve_rec.primary_hit,
+        "backup_triggered": solve_rec.backup_triggered,
     }
 
-def run_all(problem_set: list, cfg: Config,
-            strategies_dir: Path, out_path: Path):
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    rows = []
 
-    # 断点续跑：读取已完成的 problem 名
+def _worker(meta, cfg, candidates_dir, queue):
+    try:
+        p = pycutest.import_problem(meta.name)
+        init_obj = Initializer(p, meta.has_bounds, cfg)
+        candidate_raw = _load_llm_candidate(meta.name, candidates_dir)
+
+        rows = []
+        ci = init_obj.get_cutest()
+        rows.append(
+            _build_row(
+                meta,
+                "cutest",
+                0,
+                ci,
+                solve(p, ci, meta.has_bounds, cfg, meta.constraint_tag, meta.objective_tag),
+            )
+        )
+
+        for kid, ri in enumerate(init_obj.get_random(cfg.K)):
+            rows.append(
+                _build_row(
+                    meta,
+                    "random_raw",
+                    kid,
+                    ri,
+                    solve(p, ri, meta.has_bounds, cfg, meta.constraint_tag, meta.objective_tag),
+                )
+            )
+
+        for kid, ri in enumerate(init_obj.get_random_post(cfg.K, meta.constraint_tag)):
+            rows.append(
+                _build_row(
+                    meta,
+                    "random_post",
+                    kid,
+                    ri,
+                    solve(p, ri, meta.has_bounds, cfg, meta.constraint_tag, meta.objective_tag),
+                )
+            )
+
+        multi_cfg = cfg.llm.get("multi_output", {}) if isinstance(cfg.llm, dict) else {}
+        multi_enabled = bool(multi_cfg.get("enabled", False))
+        multi_k = int(multi_cfg.get("k", 5))
+
+        if candidate_raw is not None:
+            try:
+                if multi_enabled:
+                    candidate = validate_candidate_multi(candidate_raw, p.n, k=multi_k)
+                else:
+                    candidate = validate_candidate(candidate_raw, p.n)
+            except Exception:
+                candidate = None
+            if candidate is not None:
+                for kid, li in enumerate(init_obj.get_llm_raw(candidate)):
+                    rows.append(
+                        _build_row(
+                            meta,
+                            "llm_raw",
+                            kid,
+                            li,
+                            solve(p, li, meta.has_bounds, cfg, meta.constraint_tag, meta.objective_tag),
+                        )
+                    )
+
+                for kid, li in enumerate(init_obj.get_llm_post(candidate, meta.constraint_tag)):
+                    rows.append(
+                        _build_row(
+                            meta,
+                            "llm_post",
+                            kid,
+                            li,
+                            solve(p, li, meta.has_bounds, cfg, meta.constraint_tag, meta.objective_tag),
+                        )
+                    )
+
+        queue.put(rows)
+    except Exception:
+        queue.put([])
+
+
+def run_all(problem_set, cfg, candidates_dir, out_path):
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     done_problems = set()
     if out_path.exists():
-        existing = pd.read_parquet(out_path, columns=["problem"])
-        done_problems = set(existing["problem"].unique())
+        done_problems = set(pd.read_parquet(out_path, columns=["problem"])["problem"].unique())
 
+    all_rows = []
     for meta in tqdm(problem_set, desc="Problems"):
         if meta.name in done_problems:
             continue
-        try:
-            p = pycutest.import_problem(meta.name)
-        except Exception:
+        queue = mp.Queue()
+        proc = mp.Process(target=_worker, args=(meta, cfg, candidates_dir, queue))
+        proc.start()
+        proc.join(PROBLEM_TIMEOUT)
+        if proc.is_alive():
+            print(f"\n[SKIP] {meta.name}: timeout after {PROBLEM_TIMEOUT}s")
+            proc.kill()
+            proc.join()
             continue
+        rows = queue.get() if not queue.empty() else []
+        all_rows.extend(rows)
 
-        init_obj = Initializer(p, meta.category, cfg)
-        strategies = _load_strategies(meta.name, strategies_dir,
-                                      cfg, meta.has_bounds)
-        # ── CUTEst baseline ──────────────────────────
-        ci = init_obj.get_cutest()
-        sr = solve(p, ci, meta.category, cfg)
-        rows.append(_build_row(meta, "cutest", 0, ci, sr))
-
-        # ── Random baseline ──────────────────────────
-        for kid, ri in enumerate(init_obj.get_random(cfg.K)):
-            sr = solve(p, ri, meta.category, cfg)
-            rows.append(_build_row(meta, "random", kid, ri, sr))
-
-        # ── LLM ──────────────────────────────────────
-        if strategies:
-            for kid, li in enumerate(init_obj.get_llm(strategies)):
-                sr = solve(p, li, meta.category, cfg)
-                rows.append(_build_row(meta, "llm", kid, li, sr))
-
-        p.close()
-
-    # 追加写入
-    df_new = pd.DataFrame(rows)
+    df_new = pd.DataFrame(all_rows)
     if out_path.exists():
-        df_old = pd.read_parquet(out_path)
-        df_all = pd.concat([df_old, df_new], ignore_index=True)
+        df_all = pd.concat([pd.read_parquet(out_path), df_new], ignore_index=True)
     else:
         df_all = df_new
     df_all.to_parquet(out_path, index=False)
     print(f"Saved {len(df_all)} rows to {out_path}")
+

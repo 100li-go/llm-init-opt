@@ -1,0 +1,165 @@
+{
+  "mode": "llm_k5",
+  "name": "PORTFL6",
+  "route_key": "LEB:LS",
+  "payload": {
+    "n": 12,
+    "m": 1,
+    "x0": [
+      0.0833,
+      0.0833,
+      0.0833,
+      0.0833,
+      0.0833,
+      0.0833,
+      0.0833,
+      0.0833,
+      0.0833,
+      0.0833,
+      0.0833,
+      0.0833
+    ],
+    "bounds": {
+      "has_bounds": true,
+      "bl": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bu": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "objective": {
+      "f0": 0.0304,
+      "gnorm0": 0.0775,
+      "g0": [
+        0.0106,
+        0.0452,
+        0.0161,
+        0.0158,
+        0.0114,
+        0.0231,
+        0.0313,
+        0.014,
+        0.0258,
+        0.0183,
+        0.0139,
+        0.0175
+      ]
+    },
+    "constraints": {
+      "tag": "LEB",
+      "cl": [
+        0.0
+      ],
+      "cu": [
+        0.0
+      ],
+      "c0": [
+        -4.000272335602517e-12
+      ],
+      "max_violation0": 4.000272335602517e-12,
+      "sum_violation0": 4.000272335602517e-12,
+      "n_violated0": 0,
+      "topk": [
+        {
+          "i": 0,
+          "type": "eq",
+          "sense": "eq",
+          "cl": 0.0,
+          "cu": 0.0,
+          "c0": -4.000272335602517e-12,
+          "violation": 4.000272335602517e-12,
+          "jacobian_row_sparse": [
+            {
+              "j": 0,
+              "val": 1.0
+            },
+            {
+              "j": 1,
+              "val": 1.0
+            },
+            {
+              "j": 2,
+              "val": 1.0
+            },
+            {
+              "j": 3,
+              "val": 1.0
+            },
+            {
+              "j": 4,
+              "val": 1.0
+            },
+            {
+              "j": 5,
+              "val": 1.0
+            },
+            {
+              "j": 6,
+              "val": 1.0
+            },
+            {
+              "j": 7,
+              "val": 1.0
+            },
+            {
+              "j": 8,
+              "val": 1.0
+            },
+            {
+              "j": 9,
+              "val": 1.0
+            },
+            {
+              "j": 10,
+              "val": 1.0
+            },
+            {
+              "j": 11,
+              "val": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    "scales": {
+      "x0_norm2": 0.2886,
+      "suggested_step_norm": 0.0721,
+      "max_abs_x_suggested": 100.0
+    },
+    "problem_properties": {
+      "objective": "sum of squares",
+      "constraints": "linear",
+      "regular": true,
+      "degree": 2,
+      "origin": "modelling",
+      "internal": false,
+      "n": 12,
+      "m": 1
+    }
+  },
+  "system_prompt": "你是数值优化 warm-start 专家。只输出一个 JSON 数组（单行），其长度必须恰好等于 K=5。该数组的每个元素都必须是长度为 n 的 JSON 数组。所有数值必须有限。当 bounds.has_bounds=true 时，必须满足所有有限边界；对 |bl|>=1e20 或 |bu|>=1e20 的边界，按无界处理。禁止输出 JSON 对象、解释文本、注释或 markdown。",
+  "user_prompt": "策略：当前线性等式已基本满足（max_violation0 接近 0）。优先保持等式可行性，不显著增大 violation；在此基础上改进 objective。\n可小幅调整并尽量保持 topk 等式接近满足。\n\n5 个候选的分工如下（按顺序给出 5 个数组）：\n(1) 保守可行解：尽量接近 x0；若 max_violation0 很小则优先保持等式可行性。\n(2) 等式修复-协同：利用 constraints.topk 的 jacobian_row_sparse 协同降低等式 violation。\n(3) 等式修复-偏重 top1：优先修复 topk[0]，同时保持总体 max_violation0 下降。\n(4) 目标改进-可行优先：在(1)/(2)附近沿 -objective.g0 小步改进 objective，避免 violation 显著上升。\n(5) 探索解：与前 4 个明显不同，且等式 violation 不显著变差。\n若 objective.g0 缺失，则 (4) 改为不同方向小扰动且保持 violation 不增大。\n\n下面给出 payload（UTF-8 JSON，按其中字段进行推理）：\n{\n  \"n\": 12,\n  \"m\": 1,\n  \"x0\": [\n    0.0833,\n    0.0833,\n    0.0833,\n    0.0833,\n    0.0833,\n    0.0833,\n    0.0833,\n    0.0833,\n    0.0833,\n    0.0833,\n    0.0833,\n    0.0833\n  ],\n  \"bounds\": {\n    \"has_bounds\": true,\n    \"bl\": [\n      0.0,\n      0.0,\n      0.0,\n      0.0,\n      0.0,\n      0.0,\n      0.0,\n      0.0,\n      0.0,\n      0.0,\n      0.0,\n      0.0\n    ],\n    \"bu\": [\n      1.0,\n      1.0,\n      1.0,\n      1.0,\n      1.0,\n      1.0,\n      1.0,\n      1.0,\n      1.0,\n      1.0,\n      1.0,\n      1.0\n    ]\n  },\n  \"objective\": {\n    \"f0\": 0.0304,\n    \"gnorm0\": 0.0775,\n    \"g0\": [\n      0.0106,\n      0.0452,\n      0.0161,\n      0.0158,\n      0.0114,\n      0.0231,\n      0.0313,\n      0.014,\n      0.0258,\n      0.0183,\n      0.0139,\n      0.0175\n    ]\n  },\n  \"constraints\": {\n    \"tag\": \"LEB\",\n    \"cl\": [\n      0.0\n    ],\n    \"cu\": [\n      0.0\n    ],\n    \"c0\": [\n      -4.000272335602517e-12\n    ],\n    \"max_violation0\": 4.000272335602517e-12,\n    \"sum_violation0\": 4.000272335602517e-12,\n    \"n_violated0\": 0,\n    \"topk\": [\n      {\n        \"i\": 0,\n        \"type\": \"eq\",\n        \"sense\": \"eq\",\n        \"cl\": 0.0,\n        \"cu\": 0.0,\n        \"c0\": -4.000272335602517e-12,\n        \"violation\": 4.000272335602517e-12,\n        \"jacobian_row_sparse\": [\n          {\n            \"j\": 0,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 1,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 2,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 3,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 4,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 5,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 6,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 7,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 8,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 9,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 10,\n            \"val\": 1.0\n          },\n          {\n            \"j\": 11,\n            \"val\": 1.0\n          }\n        ]\n      }\n    ]\n  },\n  \"scales\": {\n    \"x0_norm2\": 0.2886,\n    \"suggested_step_norm\": 0.0721,\n    \"max_abs_x_suggested\": 100.0\n  },\n  \"problem_properties\": {\n    \"objective\": \"sum of squares\",\n    \"constraints\": \"linear\",\n    \"regular\": true,\n    \"degree\": 2,\n    \"origin\": \"modelling\",\n    \"internal\": false,\n    \"n\": 12,\n    \"m\": 1\n  }\n}"
+}

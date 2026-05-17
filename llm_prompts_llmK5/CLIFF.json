@@ -1,0 +1,46 @@
+{
+  "mode": "llm_k5",
+  "name": "CLIFF",
+  "route_key": "U:SmoothNLP",
+  "payload": {
+    "n": 2,
+    "m": 0,
+    "x0": [
+      0.0,
+      -1.0
+    ],
+    "bounds": {
+      "has_bounds": false,
+      "bl": null,
+      "bu": null
+    },
+    "objective": {
+      "f0": 100000000.0,
+      "gnorm0": 100000000.0,
+      "g0": [
+        100000000.0,
+        -100000000.0
+      ]
+    },
+    "constraints": {
+      "tag": "U"
+    },
+    "scales": {
+      "x0_norm2": 1.0,
+      "suggested_step_norm": 0.25,
+      "max_abs_x_suggested": 100.0
+    },
+    "problem_properties": {
+      "objective": "other",
+      "constraints": "unconstrained",
+      "regular": true,
+      "degree": 2,
+      "origin": "academic",
+      "internal": false,
+      "n": 2,
+      "m": 0
+    }
+  },
+  "system_prompt": "你是数值优化 warm-start 专家。只输出一个 JSON 数组（单行），其长度必须恰好等于 K=5。该数组的每个元素都必须是长度为 n 的 JSON 数组。所有数值必须有限。当 bounds.has_bounds=true 时，必须满足所有有限边界；对 |bl|>=1e20 或 |bu|>=1e20 的边界，按无界处理。禁止输出 JSON 对象、解释文本、注释或 markdown。",
+  "user_prompt": "策略：无一般约束，重点降低 objective.f0 或残差指标；保持变量尺度稳定，参考 scales。\n\n5 个候选的分工如下（按顺序给出 5 个数组）：\n(1) 保守解：尽量接近 x0（步长不超过 scales.suggested_step_norm 的 0.1 倍）。\n(2) 梯度小步下降：沿 -objective.g0 方向小步（约 0.5×suggested_step_norm）。\n(3) 梯度中步下降：沿 -objective.g0 方向中步（约 1.0×suggested_step_norm）。\n(4) 梯度+坐标扰动：在(2)/(3)基础上，对 |g0| 最大的 1~3 个变量加不同符号小扰动。\n(5) 探索解：与 x0 明显不同但不极端（受 scales.max_abs_x_suggested 约束）。\n若 objective.g0 缺失，则用围绕 x0 的不同方向小扰动替代 (2)(3)(4)。\n\n下面给出 payload（UTF-8 JSON，按其中字段进行推理）：\n{\n  \"n\": 2,\n  \"m\": 0,\n  \"x0\": [\n    0.0,\n    -1.0\n  ],\n  \"bounds\": {\n    \"has_bounds\": false,\n    \"bl\": null,\n    \"bu\": null\n  },\n  \"objective\": {\n    \"f0\": 100000000.0,\n    \"gnorm0\": 100000000.0,\n    \"g0\": [\n      100000000.0,\n      -100000000.0\n    ]\n  },\n  \"constraints\": {\n    \"tag\": \"U\"\n  },\n  \"scales\": {\n    \"x0_norm2\": 1.0,\n    \"suggested_step_norm\": 0.25,\n    \"max_abs_x_suggested\": 100.0\n  },\n  \"problem_properties\": {\n    \"objective\": \"other\",\n    \"constraints\": \"unconstrained\",\n    \"regular\": true,\n    \"degree\": 2,\n    \"origin\": \"academic\",\n    \"internal\": false,\n    \"n\": 2,\n    \"m\": 0\n  }\n}"
+}

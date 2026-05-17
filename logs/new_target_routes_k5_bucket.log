@@ -1,0 +1,16 @@
+/mnt/d/project2/.venv/lib/python3.12/site-packages/scipy/stats/_wilcoxon.py:181: RuntimeWarning: invalid value encountered in scalar divide
+  z = (r_plus - mn) / se
+/mnt/d/project2/.venv/lib/python3.12/site-packages/scipy/stats/_wilcoxon.py:181: RuntimeWarning: invalid value encountered in scalar divide
+  z = (r_plus - mn) / se
+/mnt/d/project2/.venv/lib/python3.12/site-packages/scipy/stats/_wilcoxon.py:181: RuntimeWarning: invalid value encountered in scalar divide
+  z = (r_plus - mn) / se
+Bucket problem counts:
+  LEB: 6
+  NLC: 156
+  UB_LS: 45
+Generated files:
+  results/new_target_routes_llmK5/reports_llmK5/buckets/problem_arm_summary.parquet
+  results/new_target_routes_llmK5/reports_llmK5/buckets/bucket_report.parquet
+  results/new_target_routes_llmK5/reports_llmK5/buckets/wilcoxon_llm_vs_cutest.parquet
+  results/new_target_routes_llmK5/reports_llmK5/buckets/wilcoxon_llm_vs_random_raw.parquet
+  results/new_target_routes_llmK5/reports_llmK5/buckets/wilcoxon_llm_vs_random_post.parquet
